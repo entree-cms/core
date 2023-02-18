@@ -1,0 +1,35 @@
+msgid "Actions"
+msgstr "操作"
+
+msgid "Add new"
+msgstr "新規登録"
+
+msgid "Add {0}"
+msgstr "{0} 新規登録"
+
+msgid "Created"
+msgstr "作成日"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Edit {0}"
+msgstr "{0} 編集"
+
+msgid "Modified"
+msgstr "更新日"
+
+msgid "Required"
+msgstr "必須"
+
+msgid "Save"
+msgstr "登録"
+
+msgid "The {0} could not be saved. Please, try again."
+msgstr "{0}の登録ができませんでした。入力内容をご確認の上、もう一度お試しください。"
+
+msgid "The {0} has been saved successfully."
+msgstr "{0}の登録が完了しました。"
+
+msgid "This {0}"
+msgstr "この{0}"

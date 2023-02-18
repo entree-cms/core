@@ -1,0 +1,44 @@
+{
+    "name": "entree-cms/core",
+    "description": "Entree Core plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "cakephp/authentication": "^2.0.0",
+        "cakephp/authorization": "^2.0.0",
+        "cakephp/cakephp": "4.4.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 || ^9.3",
+        "phpstan/phpstan": "^1.9",
+        "cakephp/cakephp-codesniffer": "^4.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "EntreeCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EntreeCore\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@test",
+            "@stan",
+            "@cs-check"
+        ],
+        "cs-check": "phpcs --colors -p  src/ tests/",
+        "cs-fix": "phpcbf --colors -p src/ tests/",
+        "stan": "phpstan analyse",
+        "test": "phpunit --colors=always"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

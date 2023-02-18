@@ -1,0 +1,5 @@
+msgid "Invalid {0} or password"
+msgstr "{0}かパスワードが違います"
+
+msgid "Sign in"
+msgstr "サインイン"

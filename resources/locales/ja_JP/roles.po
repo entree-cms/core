@@ -1,0 +1,20 @@
+msgid "{role} is privileged"
+msgstr "{role}は全権限を持ちます"
+
+msgid "Code"
+msgstr "コード"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Name"
+msgstr "ロール名"
+
+msgid "Permissions"
+msgstr "権限"
+
+msgid "Role"
+msgstr "ロール"
+
+msgid "Roles"
+msgstr "ロール"

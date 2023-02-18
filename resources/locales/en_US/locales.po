@@ -1,0 +1,5 @@
+msgid "en_US"
+msgstr "United states"
+
+msgid "ja_JP"
+msgstr "Japan"
