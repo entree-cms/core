@@ -1,0 +1,33 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  border-bottom: none !important;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+// Table
+.table {
+  margin: 0;
+
+  th, td {
+    vertical-align: middle;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

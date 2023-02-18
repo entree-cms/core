@@ -1,0 +1,11 @@
+msgid "Open the site"
+msgstr "サイトを開く"
+
+msgid "Open the admin settings"
+msgstr "管理画面を開く"
+
+msgid "Profile"
+msgstr "プロフィール"
+
+msgid "Sign out"
+msgstr "サインアウト"

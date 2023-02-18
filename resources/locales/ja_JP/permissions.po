@@ -1,0 +1,20 @@
+msgid "Category"
+msgstr "カテゴリ"
+
+msgid "Code"
+msgstr "コード"
+
+msgid "Name"
+msgstr "権限名"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Permission"
+msgstr "権限"
+
+msgid "Permissions"
+msgstr "権限"
+
+msgid "Permission categories"
+msgstr "権限カテゴリ"

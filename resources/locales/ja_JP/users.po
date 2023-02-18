@@ -1,0 +1,41 @@
+msgid "Avatar"
+msgstr "アバター"
+
+msgid "Email"
+msgstr "メールアドレス"
+
+msgid "First name"
+msgstr "名"
+
+msgid "Full name"
+msgstr "氏名"
+
+msgid "Last name"
+msgstr "姓"
+
+msgid "Locale"
+msgstr "国 / 地域"
+
+msgid "Nickname"
+msgstr "ニックネーム"
+
+msgid "No avatar"
+msgstr "アバター無し"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Profile"
+msgstr "プロフィール"
+
+msgid "Role"
+msgstr "ロール"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Users"
+msgstr "ユーザー"

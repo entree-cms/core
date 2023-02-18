@@ -1,0 +1,11 @@
+msgid "The provided value is invalid"
+msgstr "入力内容が不正です"
+
+msgid "This field cannot be left empty"
+msgstr "入力してください"
+
+msgid "This field is required"
+msgstr "入力してください"
+
+msgid "This value is already in use"
+msgstr "別のものを入力してください（既に登録されています）"

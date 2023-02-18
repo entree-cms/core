@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "mix",
+    "development": "mix",
+    "hot": "mix watch --hot",
+    "prod": "mix --production",
+    "production": "mix --production",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "watch": "mix watch"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "bootstrap": "^5.2.2",
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0"
+  }
+}

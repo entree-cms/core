@@ -1,0 +1,5 @@
+msgid "en_US"
+msgstr "英語 (US)"
+
+msgid "ja_JP"
+msgstr "日本語"

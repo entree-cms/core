@@ -1,0 +1,14 @@
+msgid "Home"
+msgstr "ホーム"
+
+msgid "Permissions"
+msgstr "権限"
+
+msgid "Roles"
+msgstr "ロール"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Users"
+msgstr "ユーザー"
