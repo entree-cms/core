@@ -45,11 +45,11 @@ class AppController extends BaseController
 
         $this->initSession();
 
-        $this->setLocaleVars();
-        $this->setLoginUser();
-
         $this->configureLocales();
         $this->configurePaths();
+
+        $this->setLocaleVars();
+        $this->setLoginUser();
 
         $this->initLocale();
         $this->initView();
