@@ -35,6 +35,10 @@ class AppView extends View
         if (!$helpers->has('Html')) {
             $this->loadHelper('EntreeCore.Html');
         }
+
+        if (!$helpers->has('Nav')) {
+            $this->loadHelper('EntreeCore.Nav');
+        }
     }
 
     // *********************************************************
