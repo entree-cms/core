@@ -26,6 +26,13 @@ class AppController extends BaseController
             throw new ForbiddenException();
         }
 
+        // Title
+        $title = Configure::read('Entree.Admin.title');
+        if ($title === null) {
+            $title = 'Entree CMS Admin';
+            Configure::write('Entree.Admin.title', $title);
+        }
+
         // View
         $this->viewBuilder()->setClassName('EntreeCore.App');
 

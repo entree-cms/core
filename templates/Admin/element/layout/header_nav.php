@@ -4,5 +4,5 @@
  */
 ?>
 <ul class="navbar-nav">
-  <?= $this->Nav->convertItemsToHtml($this->Configure->read('Admin.navItems')); ?>
+  <?= $this->Nav->convertItemsToHtml($this->Configure->read('Entree.Admin.navItems')); ?>
 </ul>

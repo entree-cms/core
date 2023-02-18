@@ -4,7 +4,7 @@
  * @var array $locales Locales
  */
 
-if (count($locales) === 0) {
+if (count($locales) <= 1) {
   return '';
 }
 

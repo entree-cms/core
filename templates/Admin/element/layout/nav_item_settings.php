@@ -3,7 +3,7 @@
  * @var \EntreeCore\View\AppView $this
  */
 
- $itemsHtml = $this->Nav->convertItemsToHtml($navItems, [
+$itemsHtml = $this->Nav->convertItemsToHtml($navItems, [
   'level' => 2,
 ]);
 ?>

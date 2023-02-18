@@ -14,24 +14,24 @@ return [
             // Navigation items
             'navItems' => [
                 'home' => [
-                    'element' => 'layout/nav_item_home',
+                    'element' => 'EntreeCore.layout/nav_item_home',
                     'sortNo' => 100,
                 ],
                 'users' => [
-                    'element' => 'layout/nav_item_users',
+                    'element' => 'EntreeCore.layout/nav_item_users',
                     'sortNo' => 200,
                 ],
                 'settings' => [
-                    'element' => 'layout/nav_item_settings',
+                    'element' => 'EntreeCore.layout/nav_item_settings',
                     'sortNo' => 900,
                     'vars' => [
                         'navItems' => [
                             'roles' => [
-                                'element' => 'layout/nav_item_roles',
+                                'element' => 'EntreeCore.layout/nav_item_roles',
                                 'sortNo' => 100,
                             ],
                             'permissions' => [
-                                'element' => 'layout/nav_item_permissions',
+                                'element' => 'EntreeCore.layout/nav_item_permissions',
                                 'sortNo' => 200,
                             ],
                         ],
