@@ -85,9 +85,9 @@ class AppController extends BaseController
     protected function configureNavItems($prefix = null): void
     {
         $prefix = $prefix ?? $this->request->getParam('prefix');
-        $navItems = Configure::read("{$prefix}.navItems", []);
+        $navItems = Configure::read("Entree.{$prefix}.navItems", []);
         $thisNavItems = Configure::read("EntreeCore.{$prefix}.navItems", []);
-        Configure::write("{$prefix}.navItems", array_merge($thisNavItems, $navItems));
+        Configure::write("Entree.{$prefix}.navItems", array_merge($thisNavItems, $navItems));
     }
 
     /**
