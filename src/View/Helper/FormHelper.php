@@ -37,6 +37,7 @@ class FormHelper extends BaseFormHelper
     {
         $options += static::EX_CONTROL_DEFAULT_OPTIONS;
         $options['id'] = $options['id'] ?? $this->_domId($field);
+        $options['required'] = $options['required'] ?? $this->context()->isRequired($field);
 
         $templateVars = [
             'class' => $this->makeClass($options['container']['class'] ?? null),
@@ -59,6 +60,7 @@ class FormHelper extends BaseFormHelper
     {
         $options += static::EX_CONTROL_DEFAULT_OPTIONS;
         $options['id'] = $options['id'] ?? $this->_domId($field);
+        $options['required'] = $options['required'] ?? $this->context()->isRequired($field);
 
         $templateVars = [
             'input' => $this->makeExInputHtml($field, $options),
