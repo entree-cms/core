@@ -31,5 +31,8 @@ msgstr "{0}の登録ができませんでした。入力内容をご確認の上
 msgid "The {0} has been saved successfully."
 msgstr "{0}の登録が完了しました。"
 
+msgid "There is no {0}."
+msgstr "該当する{0}はありません"
+
 msgid "This {0}"
 msgstr "この{0}"
