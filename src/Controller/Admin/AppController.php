@@ -27,10 +27,8 @@ class AppController extends BaseController
         }
 
         // Title
-        $title = Configure::read('Entree.Admin.title');
-        if ($title === null) {
-            $title = 'Entree CMS Admin';
-            Configure::write('Entree.Admin.title', $title);
+        if (Configure::read('Entree.Admin.title') === null) {
+            Configure::write('Entree.Admin.title', 'Entree CMS Admin');
         }
 
         // View

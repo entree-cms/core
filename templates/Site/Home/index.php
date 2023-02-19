@@ -3,9 +3,8 @@
  * @var \EntreeCore\View\AppView $this
  */
 
-$pageTitle = __d('site_home', 'Home');
-$this->assign('title', $pageTitle);
+$this->assign('title', $this->configure->read('Entree.Site.title'));
 ?>
 <div class="container-xxl py-5">
-  <h1 class="text-center"><?= $pageTitle ?></h1>
+  <h1 class="text-center"><?= __d('site_home', 'Home') ?></h1>
 </div>

@@ -21,6 +21,11 @@ class AppController extends BaseController
     {
         parent::initialize();
 
+        // Title
+        if (Configure::read('Entree.Site.title') === null) {
+            Configure::write('Entree.Site.title', 'Entree CMS');
+        }
+
         // Layout
         $layout = Configure::read('Entree.Site.layout') ?? 'EntreeCore.site_default';
         $this->viewBuilder()->setLayout($layout);

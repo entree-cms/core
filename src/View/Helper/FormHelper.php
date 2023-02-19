@@ -37,6 +37,7 @@ class FormHelper extends BaseFormHelper
     {
         $options += static::EX_CONTROL_DEFAULT_OPTIONS;
         $options['id'] = $options['id'] ?? $this->_domId($field);
+        $options['required'] = $options['required'] ?? $this->context()->isRequired($field);
 
         $templateVars = [
             'class' => $this->makeClass($options['container']['class'] ?? null),
@@ -59,9 +60,11 @@ class FormHelper extends BaseFormHelper
     {
         $options += static::EX_CONTROL_DEFAULT_OPTIONS;
         $options['id'] = $options['id'] ?? $this->_domId($field);
+        $options['required'] = $options['required'] ?? $this->context()->isRequired($field);
 
         $templateVars = [
             'input' => $this->makeExInputHtml($field, $options),
+            'error' => $this->getErrorMessage($field, $options),
             'append' => $options['append'],
             'prepend' => $options['prepend'],
         ];
@@ -108,11 +111,11 @@ class FormHelper extends BaseFormHelper
      */
     protected function getInputElement($type)
     {
-        if (in_array($type, ['select'])) {
-            return "form/ex_{$type}";
+        if (in_array($type, ['select', 'textarea'])) {
+            return "EntreeCore.form/ex_{$type}";
         }
 
-        return 'form/ex_input';
+        return 'EntreeCore.form/ex_input';
     }
 
     /**

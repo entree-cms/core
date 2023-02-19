@@ -4,8 +4,8 @@
  * @var \EntreeCore\View\AppView $this The viewer
  */
 
- $pageTitle = __('Edit {0}', strtolower(__d('users', 'Profile')));
-$this->assign('title', $this->makeAdminTitle($pageTitle));
+$pageTitle = __('Edit {0}', strtolower(__d('users', 'Profile')));
+$this->assign('title', $this->makeSiteTitle($pageTitle));
 
 $this->Html->script([
   'EntreeCore.common/users/form',

@@ -53,13 +53,31 @@ class AppView extends View
      */
     public function makeAdminTitle(string $title): string
     {
-        $adminSiteTitle = Configure::read('Entree.Admin.title');
+        $adminTitle = Configure::read('Entree.Admin.title');
 
         $title = trim($title);
         if ($title === '') {
-            return $adminSiteTitle;
+            return $adminTitle;
         }
 
-        return $title . ' - ' . $adminSiteTitle;
+        return $title . ' - ' . $adminTitle;
+    }
+
+    /**
+     * Make site page title
+     *
+     * @param string $title The page title
+     * @return string
+     */
+    public function makeSiteTitle(string $title): string
+    {
+        $siteTitle = Configure::read('Entree.Site.title');
+
+        $title = trim($title);
+        if ($title === '') {
+            return $siteTitle;
+        }
+
+        return $title . ' - ' . $siteTitle;
     }
 }
