@@ -62,6 +62,7 @@ class FormHelper extends BaseFormHelper
 
         $templateVars = [
             'input' => $this->makeExInputHtml($field, $options),
+            'error' => $this->getErrorMessage($field, $options),
             'append' => $options['append'],
             'prepend' => $options['prepend'],
         ];
