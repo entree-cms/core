@@ -109,10 +109,10 @@ class FormHelper extends BaseFormHelper
     protected function getInputElement($type)
     {
         if (in_array($type, ['select'])) {
-            return "form/ex_{$type}";
+            return "EntreeCore.form/ex_{$type}";
         }
 
-        return 'form/ex_input';
+        return 'EntreeCore.form/ex_input';
     }
 
     /**
