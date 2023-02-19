@@ -111,7 +111,7 @@ class FormHelper extends BaseFormHelper
      */
     protected function getInputElement($type)
     {
-        if (in_array($type, ['select'])) {
+        if (in_array($type, ['select', 'textarea'])) {
             return "EntreeCore.form/ex_{$type}";
         }
 
