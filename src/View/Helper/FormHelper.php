@@ -42,7 +42,7 @@ class FormHelper extends BaseFormHelper
         $templateVars = [
             'class' => $this->makeClass($options['container']['class'] ?? null),
             'label' => $this->makeExLabelHtml($field, $options),
-            'input' => $this->exInput($field, $options),
+            'input' => $options['input'] ?? $this->exInput($field, $options),
             'translations' => $this->makeTranslationsHtml($field, $options),
         ];
 
