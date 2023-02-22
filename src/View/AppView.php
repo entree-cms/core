@@ -39,6 +39,10 @@ class AppView extends View
         if (!$helpers->has('Nav')) {
             $this->loadHelper('EntreeCore.Nav');
         }
+
+        if (!$helpers->has('Paginator')) {
+            $this->loadHelper('Paginator', ['templates' => 'EntreeCore.templates/paginator']);
+        }
     }
 
     // *********************************************************
