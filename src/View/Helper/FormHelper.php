@@ -181,8 +181,8 @@ class FormHelper extends BaseFormHelper
         $val = $options['val'] ?? $this->getView()
             ->getRequest()
             ->getData($field, $this->context()->val($field));
-        if (!in_array($val, [false, null], true)) {
-            $attrs['value'] = (string)$val;
+        if (!in_array($val, [false, null], true) && !in_array(gettype($val), ['array', 'object'])) {
+            $attrs['value'] = strval($val);
         }
 
         $required = $options['required'] ?? null;
