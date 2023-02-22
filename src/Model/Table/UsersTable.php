@@ -186,12 +186,10 @@ class UsersTable extends Table
             }
         }
 
-        if ($data->offsetExists('avatar')) {
-            if ($data['avatar'] !== null) {
-                unset($data['avatar']);
-            } elseif ($data->offsetExists('avatar_file')) {
-                unset($data['avatar_file']);
-            }
+        $noAvatar = $data['no_avatar'] ?? null;
+        if ($noAvatar === '1') {
+            $data['avatar'] = null;
+            unset($data['no_avatar']);
         }
     }
 
