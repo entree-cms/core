@@ -138,6 +138,7 @@ class UserActionComponent extends Component
     protected function makeRoleOptions()
     {
         return $this->fetchTable('EntreeCore.Roles')->find('notDeleted')
+            ->all()
             ->map(function ($role) {
                 return [
                     'text' => $role->name,
