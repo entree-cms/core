@@ -7,8 +7,14 @@ msgstr "新規登録"
 msgid "Add {0}"
 msgstr "{0} 新規登録"
 
+msgid "Are you sure?"
+msgstr "本当によろしいですか？"
+
 msgid "Created"
 msgstr "作成日"
+
+msgid "Delete"
+msgstr "削除"
 
 msgid "Edit"
 msgstr "編集"
@@ -27,6 +33,12 @@ msgstr "登録"
 
 msgid "The {0} could not be saved. Please, try again."
 msgstr "{0}の登録ができませんでした。入力内容をご確認の上、もう一度お試しください。"
+
+msgid "The {0} has already been deleted."
+msgstr "指定された{0}は既に削除済です。"
+
+msgid "The {0} has been deleted."
+msgstr "{0}を削除しました。"
 
 msgid "The {0} has been saved successfully."
 msgstr "{0}の登録が完了しました。"

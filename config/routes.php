@@ -17,20 +17,24 @@ return static function (RouteBuilder $routes) {
         $routes->connect("{$adminBase}/permissions", ['controller' => 'Permissions', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/permissions/add", ['controller' => 'Permissions', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/permissions/edit/*", ['controller' => 'Permissions', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/permissions/delete/*", ['controller' => 'Permissions', 'action' => 'delete'] + $params);
         // Permission categories
         $routes->connect("{$adminBase}/permission-categories", ['controller' => 'PermissionCategories', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/permission-categories/add", ['controller' => 'PermissionCategories', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/permission-categories/edit/*", ['controller' => 'PermissionCategories', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/permission-categories/delete/*", ['controller' => 'PermissionCategories', 'action' => 'delete'] + $params);
         // Profile
         $routes->connect("{$adminBase}/profile", ['controller' => 'Users', 'action' => 'profile'] + $params);
         // Roles
         $routes->connect("{$adminBase}/roles", ['controller' => 'Roles', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/roles/add", ['controller' => 'Roles', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/roles/edit/*", ['controller' => 'Roles', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/roles/delete/*", ['controller' => 'Roles', 'action' => 'delete'] + $params);
         // Users
         $routes->connect("{$adminBase}/users", ['controller' => 'Users', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/users/add", ['controller' => 'Users', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/users/edit/*", ['controller' => 'Users', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/users/delete/*", ['controller' => 'Users', 'action' => 'delete'] + $params);
     })();
 
     /*

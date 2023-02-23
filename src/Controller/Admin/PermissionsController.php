@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace EntreeCore\Controller\Admin;
 
 use Cake\Http\Exception\ForbiddenException;
+use Cake\Http\Exception\InternalErrorException;
+use Cake\I18n\FrozenTime;
 
 /**
  * Permissions Controller
@@ -58,6 +60,38 @@ class PermissionsController extends AppController
     }
 
     /**
+     * Delete method
+     *
+     * @param string $permissionId The permission category ID
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Http\Exception\ForbiddenException
+     * @throws \Cake\Http\Exception\InternalErrorException
+     */
+    public function delete($permissionId)
+    {
+        $permission = $this->Permissions->get($permissionId);
+        if ($this->loginUser->cannot('delete', $permission)) {
+            throw new ForbiddenException();
+        }
+
+        if ($permission->deleted !== null) {
+            $this->Flash->warning(
+                __('The {0} has already been deleted.', strtolower(__d('permissions', 'Permission')))
+            );
+        } else {
+            $permission->deleted = FrozenTime::now();
+            if (!$this->Permissions->save($permission)) {
+                throw new InternalErrorException();
+            }
+            $this->Flash->success(
+                __('The {0} has been deleted.', strtolower(__d('permissions', 'Permission')))
+            );
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
      * Edit
      *
      * @param string $permissionId The Permission id.
@@ -90,8 +124,7 @@ class PermissionsController extends AppController
      */
     public function index()
     {
-        $query = $this->Permissions->find()
-            ->contain(['PermissionCategories']);
+        $query = $this->Permissions->find('notDeleted')->contain(['PermissionCategories']);
         $permissions = $this->paginate($query);
         $this->set(compact('permissions'));
     }

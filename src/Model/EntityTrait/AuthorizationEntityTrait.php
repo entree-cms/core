@@ -39,8 +39,9 @@ trait AuthorizationEntityTrait
      */
     public function hasPermission($permCodes)
     {
-        // Authorization checked
-        $this->authorization->skipAuthorization();
+        if ($this->hasRole('admin')) {
+            return true;
+        }
 
         // Get owned permission codes
         $roles = $this->roles ?? null;
@@ -125,11 +126,7 @@ trait AuthorizationEntityTrait
     // ********************************************************
 
     /**
-     * Authorization\IdentityInterface method
-     *
-     * @param string $action The action
-     * @param mixed $resource The resource
-     * @return mixed
+     * @inheritDoc
      */
     public function applyScope($action, $resource)
     {
@@ -137,11 +134,7 @@ trait AuthorizationEntityTrait
     }
 
     /**
-     * Authorization\IdentityInterface method
-     *
-     * @param string $action The action
-     * @param mixed $resource The resource
-     * @return bool
+     * @inheritDoc
      */
     public function can(string $action, $resource = null): bool
     {
@@ -157,11 +150,7 @@ trait AuthorizationEntityTrait
     }
 
     /**
-     * Authorization\IdentityInterface method
-     *
-     * @param string $action The action
-     * @param mixed $resource The resource
-     * @return \Authorization\Policy\ResultInterface
+     * @inheritDoc
      */
     public function canResult($action, $resource): ResultInterface
     {
@@ -169,9 +158,7 @@ trait AuthorizationEntityTrait
     }
 
     /**
-     * Authorization\IdentityInterface method
-     *
-     * @return self
+     * @inheritDoc
      */
     public function getOriginalData()
     {

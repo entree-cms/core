@@ -14,6 +14,7 @@ if (!$isNoAvatar) {
 <?= $this->Form->exControl('avatar_file', [
   'label' => __d('users', 'Avatar'),
   'type' => 'file',
+  'class' => 'input-avatar-file',
   'prepend' => '<i class="fa-solid fa-circle-user small"></i>',
   'disabled' => $isNoAvatar,
 ]) ?>

@@ -9,7 +9,7 @@ $this->assign('title', $this->makeAdminTitle($pageTitle));
 
 $this->element('EntreeCore.Users/breadcrumbs');
 ?>
-<div class="container-xxl">
+<div class="container-xxl mb-4">
   <div class="d-flex flex-row flex-wrap align-items-center gap-3">
     <h1 class="m-0">
       <?= $pageTitle ?>
@@ -22,6 +22,8 @@ $this->element('EntreeCore.Users/breadcrumbs');
     </nav>
   </div>
 </div>
+
+<?= $this->element('EntreeCore.layout/flash') ?>
 
 <!-- User list -->
 <?php $pagination = $this->element('EntreeCore.layout/pagination'); ?>
