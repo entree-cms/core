@@ -23,19 +23,25 @@ $this->element('EntreeCore.Users/breadcrumbs');
 
 <?= $this->element('EntreeCore.layout/flash') ?>
 
-<?= $this->Form->create($user, ['type' => 'file']); ?>
+<?= $this->Form->create($user, ['id' => 'form-user', 'type' => 'file']); ?>
   <div class="container-xxl mt-4">
     <div class="d-flex flex-column gap-5">
       <!-- Input fields -->
       <div id="user-form">
         <?= $this->element('EntreeCore.Users/form') ?>
       </div>
-      <!-- Actions -->
-      <div class="py-5 text-center">
-        <button type="submit" class="btn btn-success">
-          <?= __('Save') ?>
-        </button>
-      </div>
     </div>
   </div>
 <?= $this->Form->end(); ?>
+
+<!-- Delete -->
+<div class="container-xxl mt-4 text-end">
+  <?= $this->element('EntreeCore.Users/delete_form') ?>
+</div>
+
+<!-- Actions -->
+<div class="py-5 text-center">
+  <button type="submit" class="btn btn-success" form="form-user">
+    <?= __('Save') ?>
+  </button>
+</div>

@@ -224,9 +224,20 @@ class UsersTable extends Table
      */
     public function findAuthentication(Query $query, array $options): Query
     {
-        return $query->contain([
-            'Roles' => ['Permissions'],
-        ]);
+        return $query->find('notDeleted')
+            ->contain(['Roles' => ['Permissions'],]);
+    }
+
+    /**
+     * Find not deleted
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options The options
+     * @return \Cake\ORM\Query
+     */
+    public function findNotDeleted(Query $query, array $options): Query
+    {
+        return $query->where(['Users.deleted IS' => null]);
     }
 
     // *********************************************************

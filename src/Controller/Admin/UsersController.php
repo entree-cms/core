@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace EntreeCore\Controller\Admin;
 
+use Cake\Http\Exception\ForbiddenException;
+use Cake\Http\Exception\InternalErrorException;
+use Cake\I18n\FrozenTime;
 use Cake\I18n\I18n;
 use EntreeCore\Model\Table\RolesTable;
 
@@ -67,6 +70,38 @@ class UsersController extends AppController
     }
 
     /**
+     * Delete method
+     *
+     * @param string $userId The user ID
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Http\Exception\ForbiddenException
+     * @throws \Cake\Http\Exception\InternalErrorException
+     */
+    public function delete($userId)
+    {
+        $user = $this->Users->get($userId, ['contain' => 'Roles']);
+        if ($this->loginUser->cannot('delete', $user)) {
+            throw new ForbiddenException();
+        }
+
+        if ($user->deleted !== null) {
+            $this->Flash->warning(
+                __('The {0} has already been deleted.', strtolower(__d('users', 'User')))
+            );
+        } else {
+            $user->deleted = FrozenTime::now();
+            if (!$this->Users->save($user)) {
+                throw new InternalErrorException();
+            }
+            $this->Flash->success(
+                __('The {0} has been deleted.', strtolower(__d('users', 'User')))
+            );
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
      * Edit method
      *
      * @param string $userId The user ID
@@ -74,11 +109,7 @@ class UsersController extends AppController
      */
     public function edit($userId)
     {
-        $user = $this->Users->get($userId, [
-            'contain' => [
-                'Roles',
-            ],
-        ]);
+        $user = $this->Users->get($userId, ['contain' => ['Roles']]);
 
         if ($this->request->is('put')) {
             $postData = $this->request->getData();
@@ -113,7 +144,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $query = $this->Users->find()
+        $query = $this->Users->find('notDeleted')
             ->contain(['Roles']);
         $users = $this->paginate($query);
 

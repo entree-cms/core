@@ -31,6 +31,7 @@ return static function (RouteBuilder $routes) {
         $routes->connect("{$adminBase}/users", ['controller' => 'Users', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/users/add", ['controller' => 'Users', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/users/edit/*", ['controller' => 'Users', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/users/delete/*", ['controller' => 'Users', 'action' => 'delete'] + $params);
     })();
 
     /*

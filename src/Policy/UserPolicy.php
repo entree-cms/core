@@ -15,79 +15,79 @@ class UserPolicy implements BeforePolicyInterface
     /**
      * Pre conditions
      *
-     * @param ?\Authorization\IdentityInterface $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
+     * @param ?\Authorization\IdentityInterface $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @param string $action The action
      * @return bool|void
      */
-    public function before(?IdentityInterface $loginUser, $user, $action)
+    public function before(?IdentityInterface $user, $targetUser, $action)
     {
         if (
-            $loginUser
-            && method_exists($loginUser, 'hasRole')
-            && $loginUser->hasRole('admin')
-            && $action !== 'editRole'
+            $user
+            && method_exists($user, 'hasRole')
+            && $user->hasRole('admin')
+            && !in_array($action, ['delete', 'editRole'])
         ) {
             return true;
         }
     }
 
     /**
-     * Check if $loginUser can add User
+     * Check if $user can add User
      *
-     * @param \EntreeCore\Model\Entity\User $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
+     * @param \EntreeCore\Model\Entity\User $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canAdd(User $loginUser, User $user)
+    public function canAdd(User $user, User $targetUser)
     {
         return false;
     }
 
     /**
-     * Check if $loginUser can edit User
+     * Check if $user can delete User
      *
-     * @param \EntreeCore\Model\Entity\User $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
+     * @param \EntreeCore\Model\Entity\User $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canEdit(User $loginUser, User $user)
+    public function canDelete(User $user, User $targetUser)
+    {
+        return $user->can('delete users') && $user->id !== $targetUser->id;
+    }
+
+    /**
+     * Check if $user can edit user
+     *
+     * @param \EntreeCore\Model\Entity\User $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
+     * @return bool
+     */
+    public function canEdit(User $user, User $targetUser)
     {
         return false;
     }
 
     /**
-     * Check if $loginUser can edit User
+     * Check if $user can edit user
      *
-     * @param \EntreeCore\Model\Entity\User $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
+     * @param \EntreeCore\Model\Entity\User $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canEditRole(User $loginUser, User $user)
+    public function canEditRole(User $user, User $targetUser)
     {
-        return $loginUser->can('edit users') && $loginUser->id !== $user->id;
+        return $user->can('edit users') && $user->id !== $targetUser->id;
     }
 
     /**
-     * Check if $loginUser can delete User
+     * Check if $user can view user
      *
-     * @param \EntreeCore\Model\Entity\User $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
+     * @param \EntreeCore\Model\Entity\User $user The user to check authorization.
+     * @param \EntreeCore\Model\Entity\User $targetUser The User
      * @return bool
      */
-    public function canDelete(User $loginUser, User $user)
-    {
-        return false;
-    }
-
-    /**
-     * Check if $loginUser can view User
-     *
-     * @param \EntreeCore\Model\Entity\User $loginUser The logged in user
-     * @param \EntreeCore\Model\Entity\User $user The User
-     * @return bool
-     */
-    public function canView(User $loginUser, User $user)
+    public function canView(User $user, User $targetUser)
     {
         return false;
     }
