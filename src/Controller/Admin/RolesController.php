@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace EntreeCore\Controller\Admin;
 
 use Cake\Http\Exception\ForbiddenException;
+use Cake\Http\Exception\InternalErrorException;
+use Cake\I18n\FrozenTime;
 
 /**
  * Roles Controller
@@ -57,6 +59,38 @@ class RolesController extends AppController
     }
 
     /**
+     * Delete method
+     *
+     * @param string $roleId The role ID
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Http\Exception\ForbiddenException
+     * @throws \Cake\Http\Exception\InternalErrorException
+     */
+    public function delete($roleId)
+    {
+        $role = $this->Roles->get($roleId);
+        if ($this->loginUser->cannot('delete', $role)) {
+            throw new ForbiddenException();
+        }
+
+        if ($role->deleted !== null) {
+            $this->Flash->warning(
+                __('The {0} has already been deleted.', strtolower(__d('roles', 'Role')))
+            );
+        } else {
+            $role->deleted = FrozenTime::now();
+            if (!$this->Roles->save($role)) {
+                throw new InternalErrorException();
+            }
+            $this->Flash->success(
+                __('The {0} has been deleted.', strtolower(__d('roles', 'Role')))
+            );
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
      * Edit
      *
      * @param string $roleId The Role id
@@ -91,7 +125,7 @@ class RolesController extends AppController
      */
     public function index()
     {
-        $query = $this->Roles->find();
+        $query = $this->Roles->find('notDeleted');
         $roles = $this->paginate($query);
         $this->set(compact('roles'));
     }

@@ -27,6 +27,7 @@ return static function (RouteBuilder $routes) {
         $routes->connect("{$adminBase}/roles", ['controller' => 'Roles', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/roles/add", ['controller' => 'Roles', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/roles/edit/*", ['controller' => 'Roles', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/roles/delete/*", ['controller' => 'Roles', 'action' => 'delete'] + $params);
         // Users
         $routes->connect("{$adminBase}/users", ['controller' => 'Users', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/users/add", ['controller' => 'Users', 'action' => 'add'] + $params);

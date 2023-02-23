@@ -17,7 +17,7 @@ $this->element('EntreeCore.Roles/breadcrumbs');
 
 <?= $this->element('EntreeCore.layout/flash') ?>
 
-<?= $this->Form->create($role); ?>
+<?= $this->Form->create($role, ['id' => 'form-role']); ?>
   <div class="container-xxl mt-4">
     <div class="d-flex flex-column gap-5">
     <div class="role-form d-flex flex-column gap-4">
@@ -27,13 +27,18 @@ $this->element('EntreeCore.Roles/breadcrumbs');
         <!-- Permission field -->
         <?= $this->element('EntreeCore.Roles/permission_form') ?>
       </div>
-
-      <!-- Action -->
-      <div class="py-5 text-center">
-        <button type="submit" class="btn btn-success">
-          <?= __('Save') ?>
-        </button>
-      </div>
     </div>
   </div>
 <?= $this->Form->end(); ?>
+
+<!-- Delete -->
+<div class="container-xxl mt-4 text-end">
+  <?= $this->element('EntreeCore.Roles/delete_form') ?>
+</div>
+
+<!-- Action -->
+<div class="py-5 text-center">
+<button type="submit" class="btn btn-success" form="form-role">
+    <?= __('Save') ?>
+  </button>
+</div>
