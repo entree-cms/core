@@ -21,6 +21,7 @@ return static function (RouteBuilder $routes) {
         $routes->connect("{$adminBase}/permission-categories", ['controller' => 'PermissionCategories', 'action' => 'index'] + $params);
         $routes->connect("{$adminBase}/permission-categories/add", ['controller' => 'PermissionCategories', 'action' => 'add'] + $params);
         $routes->connect("{$adminBase}/permission-categories/edit/*", ['controller' => 'PermissionCategories', 'action' => 'edit'] + $params);
+        $routes->connect("{$adminBase}/permission-categories/delete/*", ['controller' => 'PermissionCategories', 'action' => 'delete'] + $params);
         // Profile
         $routes->connect("{$adminBase}/profile", ['controller' => 'Users', 'action' => 'profile'] + $params);
         // Roles
