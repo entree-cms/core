@@ -52,6 +52,7 @@ class AppController extends BaseController
         $this->setLoginUser();
 
         $this->initLocale();
+        $this->initPersonalNameOrder();
         $this->initView();
     }
 
@@ -119,6 +120,27 @@ class AppController extends BaseController
         }
 
         I18n::setLocale($locale);
+    }
+
+    /**
+     * Initialize personal name order
+     *
+     * @return null|void
+     */
+    protected function initPersonalNameOrder()
+    {
+        if (is_array(Configure::read('Entree.personalNameOrder'))) {
+            return;
+        }
+
+        $order = ['first', 'last'];
+
+        $locale = I18n::getLocale();
+        if (in_array($locale, ['ja_JP'])) {
+            $order = ['last', 'first'];
+        }
+
+        Configure::write('Entree.personalNameOrder', $order);
     }
 
     /**

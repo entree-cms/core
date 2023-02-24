@@ -119,18 +119,21 @@ class User extends Entity implements AuthenticationIdentity, AuthorizationIdenti
      */
     protected function _getFullName(): ?string
     {
-        $firstName = $this->first_name;
-        $lastName = $this->last_name;
-
-        if ($firstName !== '' && $lastName !== '') {
-            return $firstName . ' ' . $lastName;
-        } elseif ($firstName !== '') {
-            return $firstName;
-        } elseif ($lastName !== '') {
-            return $lastName;
+        $order = Configure::read('Entree.personalNameOrder');
+        $names = [];
+        foreach ($order as $namePrefix) {
+            $field = "{$namePrefix}_name";
+            $name = $this->{$field};
+            if (is_string($name) && $name !== '') {
+                $names[] = $name;
+            }
         }
 
-        return null;
+        if (count($names) === 0) {
+            return null;
+        }
+
+        return implode(' ', $names);
     }
 
     /**
