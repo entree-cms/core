@@ -130,7 +130,7 @@ class PermissionsController extends AppController
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

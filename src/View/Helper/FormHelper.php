@@ -75,7 +75,7 @@ class FormHelper extends BaseFormHelper
     }
 
     // *********************************************************
-    // * Protected User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

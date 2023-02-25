@@ -57,7 +57,7 @@ class UserActionComponent extends Component
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

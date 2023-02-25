@@ -131,7 +131,7 @@ class RolesController extends AppController
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

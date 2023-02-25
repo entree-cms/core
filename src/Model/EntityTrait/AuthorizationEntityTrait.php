@@ -14,10 +14,6 @@ use Cake\Http\Exception\InternalErrorException;
  */
 trait AuthorizationEntityTrait
 {
-    // ********************************************************
-    // * User-defined functions
-    // ********************************************************
-
     /**
      * Cannot check
      *
@@ -93,7 +89,7 @@ trait AuthorizationEntityTrait
     }
 
     // ********************************************************
-    // * User-defined private methods
+    // * Internal methods
     // ********************************************************
 
     /**

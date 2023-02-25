@@ -182,7 +182,7 @@ class UsersController extends AppController
     }
 
     // *********************************************************
-    // * Methods for internal use
+    // * Internal methods
     // *********************************************************
 
     /**
