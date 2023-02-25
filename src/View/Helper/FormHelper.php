@@ -106,21 +106,6 @@ class FormHelper extends BaseFormHelper
     }
 
     /**
-     * Get input element relative path without extension
-     *
-     * @param string $type Input type
-     * @return string
-     */
-    protected function getInputElement($type)
-    {
-        if (in_array($type, ['select', 'textarea'])) {
-            return "EntreeCore.form/ex_{$type}";
-        }
-
-        return 'EntreeCore.form/ex_input';
-    }
-
-    /**
      * Make value of class property
      *
      * @param string|array|null $classes Classes
@@ -167,41 +152,6 @@ class FormHelper extends BaseFormHelper
     }
 
     /**
-     * Make attributes for input, select, textarea tag
-     *
-     * @param string $field The field name
-     * @param array<string, mixed> $options Options list
-     * @return array
-     */
-    protected function makeInputAttributes($field, $options)
-    {
-        $attrs = array_filter($options, function ($value, $name) {
-            return !in_array($name, array_keys(static::EX_CONTROL_DEFAULT_OPTIONS))
-                && $value !== false;
-        }, ARRAY_FILTER_USE_BOTH);
-
-        $val = $options['val'] ?? $this->getView()
-            ->getRequest()
-            ->getData($field, $this->context()->val($field));
-        if (!in_array($val, [false, null], true) && !in_array(gettype($val), ['array', 'object'])) {
-            $attrs['value'] = strval($val);
-        }
-
-        $required = $options['required'] ?? null;
-        if ($required === true) {
-            $attrs['required'] = 'required';
-        }
-
-        foreach ($attrs as $name => $value) {
-            if ($value === true) {
-                $attrs[$name] = $name;
-            }
-        }
-
-        return $attrs;
-    }
-
-    /**
      * Make value of class attribute for input tag
      *
      * @param string $field The field name
@@ -219,42 +169,15 @@ class FormHelper extends BaseFormHelper
             throw new InternalErrorException();
         }
 
+        $type = $options['type'] ?? null;
+        $isSelectType = $type === 'select' || isset($options['options']);
+        $classes[] = $isSelectType ? 'form-select' : 'form-control';
+
         if (isset($options['error']) || $this->context()->hasError($field)) {
             $classes[] = 'is-invalid';
         }
 
         return $this->makeClass($classes);
-    }
-
-    /**
-     * Make input options parameter
-     *
-     * @param array<string, mixed> $options Options list
-     * @return array
-     */
-    protected function makeInputOptions($options)
-    {
-        $options = $options['options'] ?? null;
-        if (!is_array($options)) {
-            return [];
-        }
-
-        foreach ($options as $key => $option) {
-            $attrs = null;
-            if (is_array($option)) {
-                $value = $option['value'];
-                $text = $option['text'];
-                $attrs = array_filter($option, function ($key) {
-                    return !in_array($key, ['value', 'text']);
-                }, ARRAY_FILTER_USE_KEY);
-            } else {
-                $value = $key;
-                $text = $option;
-            }
-            $options[$key] = compact('value', 'text');
-        }
-
-        return $options;
     }
 
     /**
@@ -266,22 +189,15 @@ class FormHelper extends BaseFormHelper
      */
     protected function makeExInputHtml($field, $options)
     {
-        $type = $options['type'] ?? null;
-        if ($type === null) {
-            $type = isset($options['options']) ? 'select' : 'type';
+        $options['class'] = $this->makeInputClass($field, $options);
+        unset($options['container']);
+        unset($options['inputContainer']);
+
+        if (!isset($options['type']) && isset($options['options'])) {
+            $options['type'] = 'select';
         }
 
-        $inputElement = $options['inputElement'] ?? $this->getInputElement($type);
-
-        $templateVars = [
-            'name' => $options['name'] ?? $this->makeInputName($field),
-            'attrs' => $this->makeInputAttributes($field, $options),
-            'class' => $this->makeInputClass($field, $options),
-            'options' => $this->makeInputOptions($options),
-            'type' => $type,
-        ];
-
-        return $this->getView()->element($inputElement, $templateVars);
+        return $this->getView()->element('EntreeCore.form/ex_input', compact('field', 'options'));
     }
 
     /**
