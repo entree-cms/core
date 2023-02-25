@@ -19,9 +19,11 @@ export default class UserFormView {
    * Initialize avatar form
    */
   #initAvatarForm() {
-    this.inputNoAvatar.addEventListener('change', (event) => {
-      const isNoAvatar = event.currentTarget.checked;
-      this.fileInput.disabled = isNoAvatar;
-    });
+    if (this.inputNoAvatar) {
+      this.inputNoAvatar.addEventListener('change', (event) => {
+        const isNoAvatar = event.currentTarget.checked;
+        this.fileInput.disabled = isNoAvatar;
+      });
+    }
   }
 }
