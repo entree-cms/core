@@ -57,7 +57,7 @@ class UserActionComponent extends Component
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**
@@ -98,6 +98,8 @@ class UserActionComponent extends Component
         $this->controller->set(compact('user'));
 
         $this->controller->set($this->getFormVars());
+
+        $this->controller->render('EntreeCore.profile');
     }
 
     /**

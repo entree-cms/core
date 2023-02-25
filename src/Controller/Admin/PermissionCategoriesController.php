@@ -63,6 +63,8 @@ class PermissionCategoriesController extends AppController
             ));
         }
         $this->set(compact('permissionCategory'));
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -74,7 +76,9 @@ class PermissionCategoriesController extends AppController
      */
     public function edit($permissionCategoryId)
     {
-        $this->PermissionCategories->setLocale($this->defaultLocale);
+        if ($this->PermissionCategories->hasBehavior('Translate')) {
+            $this->PermissionCategories->setLocale($this->defaultLocale);
+        }
         $permissionCategory = $this->PermissionCategories->findDetailById($permissionCategoryId)->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {
@@ -96,6 +100,8 @@ class PermissionCategoriesController extends AppController
             ));
         }
         $this->set(compact('permissionCategory'));
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -142,5 +148,7 @@ class PermissionCategoriesController extends AppController
         $query = $this->PermissionCategories->find('notDeleted');
         $permissionCategories = $this->paginate($query);
         $this->set(compact('permissionCategories'));
+
+        $this->render('EntreeCore.index');
     }
 }

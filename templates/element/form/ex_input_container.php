@@ -2,14 +2,20 @@
 /**
  * Input field
  *
+ * @var ?string $append
+ * @var ?string $class
  * @var ?string $error Error message
  * @var ?string $input Input field html
- * @var ?string $append
  * @var ?string $prepend
  * @var \EntreeCore\View\AppView $this The view
  */
+
+$class = $class ?? '';
+if ($class !== '') {
+  $class = ' ' . $class;
+}
 ?>
-<div class="input-container">
+<div class="input-container<?= $class ?>">
   <?php if (isset($prepend) || isset($append)): ?>
     <div class="input-group has-validation">
       <?php if (isset($prepend)): ?>

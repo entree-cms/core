@@ -56,6 +56,8 @@ class RolesController extends AppController
         $this->set(compact('role'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -99,7 +101,9 @@ class RolesController extends AppController
      */
     public function edit($roleId)
     {
-        $this->Roles->setLocale($this->defaultLocale);
+        if ($this->Roles->hasBehavior('Translate')) {
+            $this->Roles->setLocale($this->defaultLocale);
+        }
         $role = $this->Roles->findDetailById($roleId)->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {
@@ -116,6 +120,8 @@ class RolesController extends AppController
         $this->set(compact('role'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -128,10 +134,12 @@ class RolesController extends AppController
         $query = $this->Roles->find('notDeleted');
         $roles = $this->paginate($query);
         $this->set(compact('roles'));
+
+        $this->render('EntreeCore.index');
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

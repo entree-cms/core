@@ -7,6 +7,9 @@
  */
 
 $attrsText = is_array($attrs) ? $this->Html->makeAttrsText($attrs) : '';
+if ($attrsText !== '') {
+  $attrsText = ' ' . $attrsText;
+}
 ?>
 <?php if (is_string($labelText) && $labelText !== ''): ?>
   <!-- Label -->

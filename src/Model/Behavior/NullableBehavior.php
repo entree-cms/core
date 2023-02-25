@@ -59,7 +59,7 @@ class NullableBehavior extends Behavior
     }
 
     // *********************************************************
-    // * User-defined private / protected functions
+    // * Internal methods
     // *********************************************************
 
     /**

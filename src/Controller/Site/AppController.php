@@ -35,7 +35,7 @@ class AppController extends BaseController
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**

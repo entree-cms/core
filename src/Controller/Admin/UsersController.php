@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace EntreeCore\Controller\Admin;
 
+use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\InternalErrorException;
 use Cake\I18n\FrozenTime;
@@ -67,6 +68,8 @@ class UsersController extends AppController
 
         $this->loadComponent('EntreeCore.UserAction');
         $this->set($this->UserAction->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -135,6 +138,8 @@ class UsersController extends AppController
 
         $this->loadComponent('EntreeCore.UserAction');
         $this->set($this->UserAction->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -144,11 +149,30 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $query = $this->Users->find('notDeleted')
-            ->contain(['Roles']);
-        $users = $this->paginate($query);
+        $tableColumns = $this->Users->getSchema()->columns();
+        $hiddenColumns = $this->Users->newEmptyEntity()->getHidden();
+        $fields = array_diff($tableColumns, $hiddenColumns);
 
+        // Get full name to sort
+        $fullNameOptions = [];
+        foreach (Configure::read('Entree.personalNameOrder') as $prefix) {
+            $fullNameOptions["{$prefix}_name"] = 'literal';
+        }
+        $fields['full_name'] = $this->Users->query()->func()->concat($fullNameOptions);
+
+        // Find users
+        $whereConds = $this->makeWhereConds($this->request->getQuery());
+        $query = $this->Users->find('notDeleted')
+            ->select($fields)
+            ->contain(['Roles'])
+            ->where($whereConds);
+        $users = $this->paginate($query, [
+            'order' => ['full_name' => 'ASC'],
+            'sortableFields' => array_merge($tableColumns, ['full_name']),
+        ]);
         $this->set(compact('users'));
+
+        $this->render('EntreeCore.index');
     }
 
     /**
@@ -161,5 +185,44 @@ class UsersController extends AppController
         $this->loadComponent('EntreeCore.UserAction');
 
         return $this->UserAction->executeProfile();
+    }
+
+    // *********************************************************
+    // * Internal methods
+    // *********************************************************
+
+    /**
+     * Make where conditions for list
+     *
+     * @param array<string, mixed> $params Search parameters
+     * @return array
+     */
+    protected function makeWhereConds($params)
+    {
+        $keywordsStr = $params['kw'] ?? null;
+        if (!is_string($keywordsStr)) {
+            return [];
+        }
+
+        $keywordsStr = trim(str_replace('　', ' ', $keywordsStr));
+        if ($keywordsStr === '') {
+            return [];
+        }
+
+        $whereConds = [];
+        $keywords = explode(' ', $keywordsStr);
+        foreach ($keywords as $keyword) {
+            $whereConds[] = [
+                'OR' => [
+                    'Users.username LIKE' => "%{$keyword}%",
+                    'Users.first_name LIKE' => "%{$keyword}%",
+                    'Users.last_name LIKE' => "%{$keyword}%",
+                    'Users.nickname LIKE' => "%{$keyword}%",
+                    'Users.email LIKE' => "%{$keyword}%",
+                ],
+            ];
+        }
+
+        return $whereConds;
     }
 }

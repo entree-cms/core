@@ -57,6 +57,8 @@ class PermissionsController extends AppController
         $this->set(compact('permission'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -100,7 +102,9 @@ class PermissionsController extends AppController
      */
     public function edit($permissionId)
     {
-        $this->Permissions->setLocale($this->defaultLocale);
+        if ($this->Permissions->hasBehavior('Translate')) {
+            $this->Permissions->setLocale($this->defaultLocale);
+        }
         $permission = $this->Permissions->findDetailById($permissionId)->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {
@@ -115,6 +119,8 @@ class PermissionsController extends AppController
         $this->set(compact('permission'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -127,10 +133,12 @@ class PermissionsController extends AppController
         $query = $this->Permissions->find('notDeleted')->contain(['PermissionCategories']);
         $permissions = $this->paginate($query);
         $this->set(compact('permissions'));
+
+        $this->render('EntreeCore.index');
     }
 
     // *********************************************************
-    // * User-defined functions
+    // * Internal methods
     // *********************************************************
 
     /**
