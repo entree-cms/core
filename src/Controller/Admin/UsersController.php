@@ -156,14 +156,16 @@ class UsersController extends AppController
         }
         $fields['full_name'] = $this->Users->query()->func()->concat($fullNameOptions);
 
+        // Find users
+        $whereConds = $this->makeWhereConds($this->request->getQuery());
         $query = $this->Users->find('notDeleted')
             ->select($fields)
-            ->contain(['Roles']);
+            ->contain(['Roles'])
+            ->where($whereConds);
         $users = $this->paginate($query, [
             'order' => ['full_name' => 'ASC'],
             'sortableFields' => array_merge($tableColumns, ['full_name']),
         ]);
-
         $this->set(compact('users'));
     }
 
@@ -177,5 +179,44 @@ class UsersController extends AppController
         $this->loadComponent('EntreeCore.UserAction');
 
         return $this->UserAction->executeProfile();
+    }
+
+    // *********************************************************
+    // * Methods for internal use
+    // *********************************************************
+
+    /**
+     * Make where conditions for list
+     *
+     * @param array<string, mixed> $params Search parameters
+     * @return array
+     */
+    protected function makeWhereConds($params)
+    {
+        $keywordsStr = $params['kw'] ?? null;
+        if (!is_string($keywordsStr)) {
+            return [];
+        }
+
+        $keywordsStr = trim(str_replace('　', ' ', $keywordsStr));
+        if ($keywordsStr === '') {
+            return [];
+        }
+
+        $whereConds = [];
+        $keywords = explode(' ', $keywordsStr);
+        foreach ($keywords as $keyword) {
+            $whereConds[] = [
+                'OR' => [
+                    'Users.username LIKE' => "%{$keyword}%",
+                    'Users.first_name LIKE' => "%{$keyword}%",
+                    'Users.last_name LIKE' => "%{$keyword}%",
+                    'Users.nickname LIKE' => "%{$keyword}%",
+                    'Users.email LIKE' => "%{$keyword}%",
+                ],
+            ];
+        }
+
+        return $whereConds;
     }
 }

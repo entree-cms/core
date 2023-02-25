@@ -19,6 +19,7 @@ class FormHelper extends BaseFormHelper
         'id' => null,
         'append' => null,
         'prepend' => null,
+        'inputContainer' => null,
         'label' => null,
         'options' => null,
         'required' => null,
@@ -68,6 +69,7 @@ class FormHelper extends BaseFormHelper
             'append' => $options['append'],
             'prepend' => $options['prepend'],
         ];
+        $templateVars += $options['inputContainer'] ?? [];
 
         return $this->getView()->element('EntreeCore.form/ex_input_container', $templateVars);
     }

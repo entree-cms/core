@@ -25,12 +25,23 @@ $this->element('EntreeCore.Users/breadcrumbs');
 
 <?= $this->element('EntreeCore.layout/flash') ?>
 
+<!-- Search form -->
+<div class="container-xxl my-4 py-2">
+  <?= $this->element('EntreeCore.Users/search_form') ?>
+</div>
+
 <!-- User list -->
-<?php $pagination = $this->element('EntreeCore.layout/pagination'); ?>
-<div class="container-xxl mt-4">
-  <?= $pagination ?>
+<div class="container-xxl">
+  <?php if (count($users) === 0): ?>
+    <div class="alert alert-secondary text-center">
+      <?= __("We couldn't find any {0}.", strtolower(__d('users', 'Users'))) ?>
+    </div>
+  <?php else: ?>
+    <?php $pagination = $this->element('EntreeCore.layout/pagination'); ?>
+    <?= $pagination ?>
 
-  <?= $this->element('EntreeCore.Users/list') ?>
+    <?= $this->element('EntreeCore.Users/list') ?>
 
-  <?= $pagination ?>
+    <?= $pagination ?>
+  <?php endif; ?>
 </div>
