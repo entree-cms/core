@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace EntreeCore\Controller\Admin;
 
+use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\InternalErrorException;
 use Cake\I18n\FrozenTime;
@@ -144,9 +145,24 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $tableColumns = $this->Users->getSchema()->columns();
+        $hiddenColumns = $this->Users->newEmptyEntity()->getHidden();
+        $fields = array_diff($tableColumns, $hiddenColumns);
+
+        // Get full name to sort
+        $fullNameOptions = [];
+        foreach (Configure::read('Entree.personalNameOrder') as $prefix) {
+            $fullNameOptions["{$prefix}_name"] = 'literal';
+        }
+        $fields['full_name'] = $this->Users->query()->func()->concat($fullNameOptions);
+
         $query = $this->Users->find('notDeleted')
+            ->select($fields)
             ->contain(['Roles']);
-        $users = $this->paginate($query);
+        $users = $this->paginate($query, [
+            'order' => ['full_name' => 'ASC'],
+            'sortableFields' => array_merge($tableColumns, ['full_name']),
+        ]);
 
         $this->set(compact('users'));
     }
