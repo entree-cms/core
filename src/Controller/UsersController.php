@@ -70,16 +70,7 @@ class UsersController extends AppController
         }
 
         if ($result->isValid()) {
-            $redirect = $this->request->getQuery('redirect');
-            if ($redirect === null) {
-                $redirect = Configure::read('Entree.loginRedirect', [
-                    'prefix' => 'Site',
-                    'controller' => 'Home',
-                    'action' => 'index',
-                ]);
-            }
-
-            return $this->redirect($redirect);
+            return $this->redirect($this->getLoginRedirectUrl($result));
         }
 
         if ($this->request->is('post') && $result->isValid() === false) {
@@ -101,5 +92,29 @@ class UsersController extends AppController
         $this->Authentication->logout();
 
         return $this->redirect(['action' => 'login']);
+    }
+
+    // *********************************************************
+    // * Internal methods
+    // *********************************************************
+
+    /**
+     * Get login redirect URL
+     *
+     * @param \Authentication\Authenticator\ResultInterface $result The result of the last authenticate
+     * @return \Psr\Http\Message\UriInterface|array|string
+     */
+    protected function getLoginRedirectUrl($result)
+    {
+        $redirect = $this->request->getQuery('redirect');
+        if ($redirect) {
+            return $redirect;
+        }
+
+        return Configure::read('Entree.loginRedirect', [
+            'prefix' => 'Site',
+            'controller' => 'Home',
+            'action' => 'index',
+        ]);
     }
 }
