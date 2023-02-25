@@ -78,6 +78,8 @@ class UsersController extends AppController
                 strtolower(__d('users', 'Username')),
             ]));
         }
+
+        $this->render('EntreeCore.login');
     }
 
     /**

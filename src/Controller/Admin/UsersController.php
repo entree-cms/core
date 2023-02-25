@@ -68,6 +68,8 @@ class UsersController extends AppController
 
         $this->loadComponent('EntreeCore.UserAction');
         $this->set($this->UserAction->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -136,6 +138,8 @@ class UsersController extends AppController
 
         $this->loadComponent('EntreeCore.UserAction');
         $this->set($this->UserAction->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -167,6 +171,8 @@ class UsersController extends AppController
             'sortableFields' => array_merge($tableColumns, ['full_name']),
         ]);
         $this->set(compact('users'));
+
+        $this->render('EntreeCore.index');
     }
 
     /**

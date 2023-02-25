@@ -57,6 +57,8 @@ class PermissionsController extends AppController
         $this->set(compact('permission'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -115,6 +117,8 @@ class PermissionsController extends AppController
         $this->set(compact('permission'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -127,6 +131,8 @@ class PermissionsController extends AppController
         $query = $this->Permissions->find('notDeleted')->contain(['PermissionCategories']);
         $permissions = $this->paginate($query);
         $this->set(compact('permissions'));
+
+        $this->render('EntreeCore.index');
     }
 
     // *********************************************************

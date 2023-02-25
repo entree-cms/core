@@ -63,6 +63,8 @@ class PermissionCategoriesController extends AppController
             ));
         }
         $this->set(compact('permissionCategory'));
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -96,6 +98,8 @@ class PermissionCategoriesController extends AppController
             ));
         }
         $this->set(compact('permissionCategory'));
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -142,5 +146,7 @@ class PermissionCategoriesController extends AppController
         $query = $this->PermissionCategories->find('notDeleted');
         $permissionCategories = $this->paginate($query);
         $this->set(compact('permissionCategories'));
+
+        $this->render('EntreeCore.index');
     }
 }

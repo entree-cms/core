@@ -98,6 +98,8 @@ class UserActionComponent extends Component
         $this->controller->set(compact('user'));
 
         $this->controller->set($this->getFormVars());
+
+        $this->controller->render('EntreeCore.profile');
     }
 
     /**

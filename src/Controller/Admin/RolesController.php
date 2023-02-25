@@ -56,6 +56,8 @@ class RolesController extends AppController
         $this->set(compact('role'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.add');
     }
 
     /**
@@ -116,6 +118,8 @@ class RolesController extends AppController
         $this->set(compact('role'));
 
         $this->set($this->getFormVars());
+
+        $this->render('EntreeCore.edit');
     }
 
     /**
@@ -128,6 +132,8 @@ class RolesController extends AppController
         $query = $this->Roles->find('notDeleted');
         $roles = $this->paginate($query);
         $this->set(compact('roles'));
+
+        $this->render('EntreeCore.index');
     }
 
     // *********************************************************
