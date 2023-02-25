@@ -101,7 +101,9 @@ class RolesController extends AppController
      */
     public function edit($roleId)
     {
-        $this->Roles->setLocale($this->defaultLocale);
+        if ($this->Roles->hasBehavior('Translate')) {
+            $this->Roles->setLocale($this->defaultLocale);
+        }
         $role = $this->Roles->findDetailById($roleId)->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {

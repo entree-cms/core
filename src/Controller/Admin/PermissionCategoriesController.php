@@ -76,7 +76,9 @@ class PermissionCategoriesController extends AppController
      */
     public function edit($permissionCategoryId)
     {
-        $this->PermissionCategories->setLocale($this->defaultLocale);
+        if ($this->PermissionCategories->hasBehavior('Translate')) {
+            $this->PermissionCategories->setLocale($this->defaultLocale);
+        }
         $permissionCategory = $this->PermissionCategories->findDetailById($permissionCategoryId)->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {
