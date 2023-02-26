@@ -34,7 +34,7 @@ class Plugin extends BasePlugin
             define('DS', DIRECTORY_SEPARATOR);
         }
 
-        require dirname(__DIR__) . DS . 'config' . DS . 'basics.php';
+        require_once dirname(__DIR__) . DS . 'config' . DS . 'basics.php';
 
         if (!defined('ENTREE_CORE_DEFAULT_STORAGE')) {
             $root = defined('ROOT') ? ROOT : dirname(dirname(dirname(__DIR__)));
