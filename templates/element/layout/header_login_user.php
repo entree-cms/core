@@ -28,7 +28,6 @@ $prefix = $this->request->getParam('prefix');
           'action' => 'index'
         ]); ?>
         <a class="dropdown-item" href="<?= $url ?>">
-          <i class="bi bi-arrow-right-circle me-1 text-secondary small"></i>
           <?= __d('login_user_nav', 'Open the site') ?>
         </a>
       <?php endif ?>
@@ -41,7 +40,6 @@ $prefix = $this->request->getParam('prefix');
           'action' => 'index'
         ]); ?>
         <a class="dropdown-item" href="<?= $url ?>">
-          <i class="bi bi-arrow-right-circle me-1 text-secondary small"></i>
           <?= __d('login_user_nav', 'Open the admin settings') ?>
         </a>
       <?php endif ?>
@@ -56,7 +54,6 @@ $prefix = $this->request->getParam('prefix');
         'action' => 'profile'
       ]); ?>
       <a class="dropdown-item" href="<?= $url ?>">
-        <i class="bi bi-door-open me-1 text-secondary small"></i>
         <?= __d('login_user_nav', 'Profile') ?>
       </a>
 
@@ -68,7 +65,6 @@ $prefix = $this->request->getParam('prefix');
         'action' => 'logout'
       ]); ?>
       <a class="dropdown-item" href="<?= $url ?>">
-        <i class="bi bi-door-open me-1 text-secondary small"></i>
         <?= __d('login_user_nav', 'Sign out') ?>
       </a>
     </div>
