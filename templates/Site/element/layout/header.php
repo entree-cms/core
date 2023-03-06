@@ -24,6 +24,11 @@ $action = $this->request->getParam('action');
     </button>
 
     <nav class="collapse navbar-collapse" id="site-header-nav">
+      <!-- Menu -->
+      <div>
+        <?= $this->element('EntreeCore.layout/header_nav') ?>
+      </div>
+
       <div class="ms-auto">
         <?php if ($loginUser): ?>
           <!-- Login user -->

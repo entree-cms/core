@@ -30,6 +30,9 @@ class AppController extends BaseController
         $layout = Configure::read('Entree.Site.layout') ?? 'EntreeCore.site_default';
         $this->viewBuilder()->setLayout($layout);
 
+        // Configure navigation items
+        $this->configureNavItems();
+
         // Set base parameters for breadcrumbs
         $this->set('breadcrumbBase', $this->getBreadcrumbBase());
     }
