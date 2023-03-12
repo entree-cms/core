@@ -45,7 +45,6 @@ class PermissionsController extends AppController
         $permission = $this->Permissions->newEntity([], ['validate' => false]);
 
         if ($this->request->is('post')) {
-            $defaults = $this->request->getData();
             $permission = $this->Permissions->patchEntity($permission, $this->request->getData());
             if ($this->Permissions->save($permission)) {
                 $this->Flash->success(__('The {0} has been saved successfully.', __d('permissions', 'Permission')));

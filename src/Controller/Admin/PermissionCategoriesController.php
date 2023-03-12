@@ -44,7 +44,6 @@ class PermissionCategoriesController extends AppController
         $permissionCategory = $this->PermissionCategories->newEntity([], ['validate' => false]);
 
         if ($this->request->is('post')) {
-            $defaults = $this->request->getData();
             $permissionCategory = $this->PermissionCategories->patchEntity(
                 $permissionCategory,
                 $this->request->getData()
