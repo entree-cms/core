@@ -21,11 +21,12 @@ class ConfigureHelper extends Helper
     /**
      * Read
      *
-     * @param string $key The key
+     * @param string|null $var Variable to obtain. Use '.' to access array elements.
+     * @param mixed $default The return value when the configure does not exist
      * @return mixed
      */
-    public function read($key)
+    public function read(?string $var = null, $default = null)
     {
-        return Configure::read($key);
+        return Configure::read($var, $default);
     }
 }

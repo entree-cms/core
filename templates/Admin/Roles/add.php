@@ -19,21 +19,19 @@ $this->element('EntreeCore.Roles/breadcrumbs');
 
 <?= $this->Form->create($role); ?>
   <div class="container-xxl mt-4">
-    <div class="d-flex flex-column gap-5">
-      <div class="role-form d-flex flex-column gap-4">
-        <!-- Input fields -->
-        <?= $this->element('EntreeCore.Roles/form') ?>
+    <div class="d-flex flex-column gap-4">
+      <!-- Input fields -->
+      <?= $this->element('EntreeCore.Roles/form') ?>
 
-        <!-- Permission field -->
-        <?= $this->element('EntreeCore.Roles/permission_form') ?>
-      </div>
+      <!-- Permission field -->
+      <?= $this->element('EntreeCore.Roles/permission_form') ?>
+    </div>
 
-      <!-- Action -->
-      <div class="py-5 text-center">
-        <button type="submit" class="btn btn-success">
-          <?= __('Save') ?>
-        </button>
-      </div>
+    <!-- Action -->
+    <div class="py-5 text-center">
+      <button type="submit" class="btn btn-success">
+        <?= __('Save') ?>
+      </button>
     </div>
   </div>
 <?= $this->Form->end(); ?>

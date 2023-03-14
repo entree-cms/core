@@ -3,14 +3,11 @@
  * @var \EntreeCore\View\AppView $this
  */
 
-$controller = $this->request->getParam('controller');
-$action = $this->request->getParam('action');
 ?>
 <header class="navbar navbar-expand-sm bg-white border-bottom sticky-top">
   <div class="container-xxl">
     <!-- Title -->
-    <?php $url = $this->Url->build(['controller' => 'Home', 'action' => 'index']) ?>
-    <a class="navbar-brand" href="<?= $url ?>">
+    <a class="navbar-brand" href="<?= $this->Configure->read('Entree.Site.homeUrl', $this->Url->build('/')) ?>">
       <?= $this->Configure->read('Entree.Site.title') ?>
     </a>
 
