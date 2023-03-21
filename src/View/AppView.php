@@ -62,15 +62,18 @@ class AppView extends View
         $prefix = $this->getRequest()->getParam('prefix');
 
         $append = '';
+        $separator = ' - ';
         switch ($prefix) {
             case 'Admin':
                 $append = Configure::read('Entree.Admin.title') ?? '';
+                $separator = Configure::read('Entree.Admin.titleSeparator') ?? $separator;
                 break;
             case 'Site':
                 $append = Configure::read('Entree.Site.title') ?? '';
+                $separator = Configure::read('Entree.Site.titleSeparator') ?? $separator;
                 break;
         }
-        if (!is_string($append)) {
+        if (!is_string($append) || !is_string($separator)) {
             throw new InternalErrorException();
         }
 
@@ -83,6 +86,6 @@ class AppView extends View
             return $title;
         }
 
-        return $title . ' - ' . $append;
+        return $title . $separator . $append;
     }
 }
