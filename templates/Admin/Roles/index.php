@@ -5,7 +5,7 @@
  */
 
 $pageTitle = __d('roles', 'Roles');
-$this->assign('title', $this->makeAdminTitle($pageTitle));
+$this->assign('title', $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.Roles/breadcrumbs');
 ?>

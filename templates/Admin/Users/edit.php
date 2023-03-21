@@ -5,7 +5,7 @@
  */
 
  $pageTitle = __('Edit {0}', strtolower(__d('users', 'User')));
-$this->assign('title', $this->makeAdminTitle($pageTitle));
+$this->assign('title', $this->makeTitle($pageTitle));
 
 $this->Html->script([
   'EntreeCore.common/users/form',

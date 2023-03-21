@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace EntreeCore\View;
 
 use Cake\Core\Configure;
+use Cake\Http\Exception\InternalErrorException;
 use Cake\View\View;
 
 /**
@@ -46,7 +47,7 @@ class AppView extends View
     }
 
     // *********************************************************
-    // * Internal methods
+    // * User-defined methods
     // *********************************************************
 
     /**
@@ -54,34 +55,34 @@ class AppView extends View
      *
      * @param string $title The page title
      * @return string
+     * @throws \Cake\Http\Exception\InternalErrorException
      */
-    public function makeAdminTitle(string $title): string
+    public function makeTitle(string $title): string
     {
-        $adminTitle = Configure::read('Entree.Admin.title');
+        $prefix = $this->getRequest()->getParam('prefix');
+
+        $append = '';
+        switch ($prefix) {
+            case 'Admin':
+                $append = Configure::read('Entree.Admin.title') ?? '';
+                break;
+            case 'Site':
+                $append = Configure::read('Entree.Site.title') ?? '';
+                break;
+        }
+        if (!is_string($append)) {
+            throw new InternalErrorException();
+        }
 
         $title = trim($title);
         if ($title === '') {
-            return $adminTitle;
+            return $append;
         }
 
-        return $title . ' - ' . $adminTitle;
-    }
-
-    /**
-     * Make site page title
-     *
-     * @param string $title The page title
-     * @return string
-     */
-    public function makeSiteTitle(string $title): string
-    {
-        $siteTitle = Configure::read('Entree.Site.title');
-
-        $title = trim($title);
-        if ($title === '') {
-            return $siteTitle;
+        if ($append === '') {
+            return $title;
         }
 
-        return $title . ' - ' . $siteTitle;
+        return $title . ' - ' . $append;
     }
 }

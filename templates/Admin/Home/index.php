@@ -4,7 +4,7 @@
  */
 
 $pageTitle = __d('admin_home', 'Home');
-$this->assign('title', $this->makeAdminTitle($pageTitle));
+$this->assign('title', $this->makeTitle($pageTitle));
 
 $this->Breadcrumbs->add([
   ['title' => __d('admin_home', 'Home')],
