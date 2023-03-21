@@ -4,7 +4,7 @@
  * @var \EntreeCore\View\AppView $this The view
  */
 $pageTitle = __('Add {0}', strtolower(__d('permission_categories', 'Permission category')));
-$this->assign('title',  $this->makeAdminTitle($pageTitle));
+$this->assign('title',  $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.PermissionCategories/breadcrumbs');
 ?>

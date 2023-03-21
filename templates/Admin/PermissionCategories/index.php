@@ -5,7 +5,7 @@
  */
 
 $pageTitle = __d('permission_categories', 'Permission categories');
-$this->assign('title', $this->makeAdminTitle($pageTitle));
+$this->assign('title', $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.PermissionCategories/breadcrumbs');
 ?>
