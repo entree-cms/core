@@ -4,6 +4,8 @@
 <body>
   <?= $this->element('EntreeCore.layout/header') ?>
 
+  <?= $this->element('EntreeCore.layout/breadcrumbs') ?>
+
   <?= $this->fetch('content') ?>
 </body>
 </html>
