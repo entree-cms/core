@@ -71,7 +71,9 @@ class UserActionComponent extends Component
 
         $user = $this->Users->get($this->loginUser->id, [
             'contain' => [
-                'Roles',
+                'Roles' => [
+                    'Permissions',
+                ],
             ],
         ]);
 
