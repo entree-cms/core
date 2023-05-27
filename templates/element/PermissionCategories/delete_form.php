@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \EntreeCore\View\AppView $this
- * @var \EntreeCore\Model\ENtity\User $loginUser
+ * @var \EntreeCore\Model\Entity\User $loginUser
  * @var \EntreeCore\Model\Entity\PermissionCategory $permissionCategory
  */
 ?>
