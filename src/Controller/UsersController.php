@@ -93,7 +93,9 @@ class UsersController extends AppController
 
         $this->Authentication->logout();
 
-        return $this->redirect(['action' => 'login']);
+        return $this->redirect(
+            Configure::read('Entree.logoutRedirect', ['action' => 'login'])
+        );
     }
 
     // *********************************************************
