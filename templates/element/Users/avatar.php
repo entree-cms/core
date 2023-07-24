@@ -17,14 +17,16 @@ if (!is_numeric($fontSize)) {
 // User's name
 $userName = $user->name;
 ?>
-<?php if ($user->avatar): ?>
-  <img
-    class="d-block rounded-circle" src="<?= $user->avatar_url ?>"
-    width="<?= $size ?>" height="<?= $size ?>">
-<?php else: ?>
-  <div
-    class="bg-secondary rounded-circle text-white d-flex align-items-center justify-content-center"
-    style="font-size: <?= $fontSize ?>px; width: <?= $size ?>px; height: <?= $size ?>px;">
-    <?= mb_substr($userName, 0, 1) ?>
-  </div>
-<?php endif; ?>
+<div class="avatar">
+  <?php if ($user->avatar): ?>
+    <img
+      class="image d-block rounded-circle" src="<?= $user->avatar_url ?>"
+      width="<?= $size ?>" height="<?= $size ?>">
+  <?php else: ?>
+    <div
+      class="name-icon bg-secondary rounded-circle text-white d-flex align-items-center justify-content-center"
+      style="font-size: <?= $fontSize ?>px; width: <?= $size ?>px; height: <?= $size ?>px;">
+      <?= mb_substr($userName, 0, 1) ?>
+    </div>
+  <?php endif; ?>
+</div>

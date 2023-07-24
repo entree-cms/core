@@ -6,7 +6,7 @@
 
 $prefix = $this->request->getParam('prefix');
 ?>
-<ul class="navbar-nav">
+<ul class="login-user-nav navbar-nav">
   <li class="nav-item dropdown">
     <!-- Name of the logged in user -->
     <a
@@ -14,7 +14,7 @@ $prefix = $this->request->getParam('prefix');
       id="dropdown-login-user" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
       >
       <?= $this->element('EntreeCore.Users/avatar', ['user' => $loginUser, 'size' => 32]) ?>
-      <?= h($loginUser->name) ?>
+      <span class="name"><?= h($loginUser->name) ?></span>
     </a>
 
     <!-- Menu items -->

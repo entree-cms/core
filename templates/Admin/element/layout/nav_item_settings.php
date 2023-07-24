@@ -10,7 +10,7 @@ $itemsHtml = $this->Nav->convertItemsToHtml($navItems, [
 <?php if (trim($itemsHtml) !== ''): ?>
   <!-- Settings -->
   <li class="nav-item dropdown">
-    <?php $isActive = in_array($this->request->getParam('controller'), ['Settings']); ?>
+    <?php $isActive = in_array($this->request->getParam('controller'), ['Roles', 'Permissions', 'PermissionCategories']); ?>
     <?php $active = $isActive ? ' active' : ''; ?>
     <a
       id="nav-settings" class="nav-link dropdown-toggle<?= $active ?>" href="#"
