@@ -7,6 +7,7 @@ use App\Controller\AppController as BaseController;
 use Cake\Core\Configure;
 use Cake\Http\Exception\InternalErrorException;
 use Cake\I18n\I18n;
+use Cake\Routing\Router;
 
 /**
  * Application controller
@@ -102,6 +103,30 @@ class AppController extends BaseController
         $defaultPaths = Configure::read('EntreeCore.paths');
         $paths = Configure::read('Entree.paths', []);
         Configure::write('Entree.paths', array_merge($defaultPaths, $paths));
+    }
+
+    /**
+     * Get base parameters for breadcrumbs
+     *
+     * @return array
+     */
+    protected function getBreadcrumbBase(): array
+    {
+        if (method_exists(parent::class, 'getBreadcrumbBase')) {
+            return parent::getBreadcrumbBase();
+        }
+
+        $prefix = $this->request->getParam('prefix');
+
+        $title = __d('site_layout', 'Home');
+        $url = Router::url([
+            'plugin' => 'EntreeCore',
+            'prefix' => $prefix,
+            'controller' => 'Home',
+            'action' => 'index',
+        ]);
+
+        return [compact('title', 'url')];
     }
 
     /**

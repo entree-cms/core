@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace EntreeCore\Controller\Site;
 
 use Cake\Core\Configure;
-use Cake\Routing\Router;
 use EntreeCore\Controller\AppController as BaseController;
 
 /**
@@ -35,22 +34,5 @@ class AppController extends BaseController
 
         // Set base parameters for breadcrumbs
         $this->set('breadcrumbBase', $this->getBreadcrumbBase());
-    }
-
-    // *********************************************************
-    // * Internal methods
-    // *********************************************************
-
-    /**
-     * Get base parameters for breadcrumbs
-     *
-     * @return array
-     */
-    protected function getBreadcrumbBase(): array
-    {
-        $title = __d('site_layout', 'Home');
-        $url = Router::url(['plugin' => 'EntreeCore', 'controller' => 'Home', 'action' => 'index']);
-
-        return [compact('title', 'url')];
     }
 }
