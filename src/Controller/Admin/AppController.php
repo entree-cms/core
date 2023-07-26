@@ -30,9 +30,6 @@ class AppController extends BaseController
             Configure::write('Entree.Admin.title', 'Entree CMS Admin');
         }
 
-        // View
-        $this->viewBuilder()->setClassName('EntreeCore.App');
-
         // Layout
         $layout = Configure::read('Entree.Admin.layout') ?? 'EntreeCore.admin_default';
         $this->viewBuilder()->setLayout($layout);
