@@ -69,6 +69,12 @@ class AppController extends BaseController
      */
     protected function configureLocales(): void
     {
+        if (method_exists(parent::class, 'configureLocales')) {
+            parent::configureLocales();
+
+            return;
+        }
+
         $locales = Configure::read('Entree.locales', []);
         if (is_array($locales) && count($locales) > 0) {
             return;
@@ -86,6 +92,12 @@ class AppController extends BaseController
      */
     protected function configureNavItems($prefix = null): void
     {
+        if (method_exists(parent::class, 'configureNavItems')) {
+            parent::configureNavItems($prefix);
+
+            return;
+        }
+
         $prefix = $prefix ?? $this->request->getParam('prefix');
         $navItems = Configure::read("Entree.{$prefix}.navItems", []);
         $thisNavItems = Configure::read("EntreeCore.{$prefix}.navItems", []);
@@ -100,6 +112,12 @@ class AppController extends BaseController
      */
     protected function configurePaths(): void
     {
+        if (method_exists(parent::class, 'configurePaths')) {
+            parent::configurePaths();
+
+            return;
+        }
+
         $defaultPaths = Configure::read('EntreeCore.paths');
         $paths = Configure::read('Entree.paths', []);
         Configure::write('Entree.paths', array_merge($defaultPaths, $paths));
@@ -136,6 +154,12 @@ class AppController extends BaseController
      */
     protected function initLocale(): void
     {
+        if (method_exists(parent::class, 'initLocale')) {
+            parent::initLocale();
+
+            return;
+        }
+
         $this->defaultLocale = Configure::read('App.defaultLocale');
 
         $locale = $this->session->read('locale');
@@ -154,6 +178,12 @@ class AppController extends BaseController
      */
     protected function initPersonalNameOrder()
     {
+        if (method_exists(parent::class, 'initPersonalNameOrder')) {
+            parent::initPersonalNameOrder();
+
+            return;
+        }
+
         if (is_array(Configure::read('Entree.personalNameOrder'))) {
             return;
         }
@@ -175,6 +205,12 @@ class AppController extends BaseController
      */
     protected function initSession(): void
     {
+        if (method_exists(parent::class, 'initSession')) {
+            parent::initSession();
+
+            return;
+        }
+
         $this->session = $this->request->getSession();
     }
 
@@ -185,6 +221,12 @@ class AppController extends BaseController
      */
     protected function initView(): void
     {
+        if (method_exists(parent::class, 'initView')) {
+            parent::initView();
+
+            return;
+        }
+
         $this->viewBuilder()->setClassName('EntreeCore.App');
     }
 
@@ -196,6 +238,12 @@ class AppController extends BaseController
      */
     protected function setLocaleVars(): void
     {
+        if (method_exists(parent::class, 'setLocaleVars')) {
+            parent::setLocaleVars();
+
+            return;
+        }
+
         $locales = Configure::read('Entree.locales');
         if (!is_array($locales)) {
             throw new InternalErrorException();
@@ -221,6 +269,12 @@ class AppController extends BaseController
      */
     protected function setLoginUser(): void
     {
+        if (method_exists(parent::class, 'setLoginUser')) {
+            parent::setLoginUser();
+
+            return;
+        }
+
         $this->loginUser = $this->request->getAttribute('identity');
         if ($this->request->getParam('prefix') !== 'Api') {
             $this->set('loginUser', $this->loginUser);
