@@ -17,7 +17,7 @@
         <?php $defaultIds = $this->request->getData('permissions._ids', $role->permission_ids); ?>
         <?php foreach ($permissionCategory->permissions as $permission): ?>
           <?php $checked = (in_array($permission->id, $defaultIds)) ? ' checked' : ''; ?>
-          <li class="list-group-item">
+          <li class="list-group-item list-group-item-action">
             <input
               class="form-check-input me-1" type="checkbox"
               id="input-permission-id-<?= $permission->id ?>"
