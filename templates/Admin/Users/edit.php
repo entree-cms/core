@@ -4,7 +4,7 @@
  * @var \EntreeCore\View\AppView $this The viewer
  */
 
- $pageTitle = __('Edit {0}', strtolower(__d('users', 'User')));
+$pageTitle = __('Edit {0}', strtolower(__d('users', 'User')));
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->Html->script([
