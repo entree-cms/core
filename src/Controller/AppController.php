@@ -52,6 +52,7 @@ class AppController extends BaseController
         $this->setLocaleVars();
         $this->setLoginUser();
 
+        $this->initFlash();
         $this->initLocale();
         $this->initPersonalNameOrder();
         $this->initView();
@@ -145,6 +146,22 @@ class AppController extends BaseController
         ]);
 
         return [compact('title', 'url')];
+    }
+
+    /**
+     * Initialize flash
+     *
+     * @return void
+     */
+    protected function initFlash(): void
+    {
+        if (method_exists(parent::class, 'initFlash')) {
+            parent::initFlash();
+
+            return;
+        }
+
+        $this->Flash->setConfig('plugin', 'EntreeCore');
     }
 
     /**
