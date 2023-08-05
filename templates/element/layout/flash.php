@@ -2,9 +2,9 @@
 /**
  * Flash message box
  *
+ * @var ?array $options
+ * @var ?string $key
  * @var Cake\View\View $this
- * @var string|null $key Flash key.
- * @var array|null $config Flash render options.
  */
 $key = $key ?? 'flash';
 $options = $options ?? [];
