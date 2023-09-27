@@ -10,6 +10,9 @@ msgstr "{0} 新規登録"
 msgid "Are you sure?"
 msgstr "本当によろしいですか？"
 
+msgid "Cancel"
+msgstr "キャンセル"
+
 msgid "Created"
 msgstr "作成日"
 
@@ -48,6 +51,9 @@ msgstr "{0}を削除しました。"
 
 msgid "The {0} has been saved successfully."
 msgstr "{0}の登録が完了しました。"
+
+msgid "There are no {0}."
+msgstr "該当する{0}はありません"
 
 msgid "There is no {0}."
 msgstr "該当する{0}はありません"
