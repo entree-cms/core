@@ -140,7 +140,10 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
-        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add(
+            $rules->isUnique(['email'], ['allowMultipleNulls' => true]),
+            ['errorField' => 'email']
+        );
         $rules->add($rules->validCount('roles', 0, '>', __d('cake', 'This field cannot be left empty')));
 
         return $rules;
