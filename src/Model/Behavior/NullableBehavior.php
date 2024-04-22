@@ -16,7 +16,7 @@ class NullableBehavior extends Behavior
     /**
      * @var array<string, mixed> Default configuration.
      */
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         'fields' => null,
     ];
 

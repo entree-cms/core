@@ -33,7 +33,7 @@ class Permission extends Entity
      *
      * @var array<string, bool>
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         '_translations' => true,
         'permission_category_id' => true,
         'code' => true,

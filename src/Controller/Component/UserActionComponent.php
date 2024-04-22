@@ -15,13 +15,6 @@ class UserActionComponent extends Component
     use LocatorAwareTrait;
 
     /**
-     * Default configuration.
-     *
-     * @var array<string, mixed>
-     */
-    protected $_defaultConfig = [];
-
-    /**
      * @var \Cake\Controller\Controller $controller The controller this component is bound to.
      */
     protected $controller;

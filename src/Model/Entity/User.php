@@ -42,7 +42,7 @@ class User extends Entity implements AuthenticationIdentity, AuthorizationIdenti
      *
      * @var array<string, bool>
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'username' => true,
         'password' => true,
         'first_name' => true,
@@ -59,7 +59,7 @@ class User extends Entity implements AuthenticationIdentity, AuthorizationIdenti
      *
      * @var array<string>
      */
-    protected $_hidden = [
+    protected array $_hidden = [
         'password',
     ];
 

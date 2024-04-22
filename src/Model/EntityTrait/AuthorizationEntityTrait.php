@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace EntreeCore\Model\EntityTrait;
 
+use ArrayAccess;
 use Authorization\AuthorizationServiceInterface;
 use Authorization\Policy\ResultInterface;
 use Cake\Http\Exception\InternalErrorException;
@@ -124,7 +125,7 @@ trait AuthorizationEntityTrait
     /**
      * @inheritDoc
      */
-    public function applyScope($action, $resource)
+    public function applyScope(string $action, mixed $resource, mixed ...$optionalArgs): mixed
     {
         return $this->authorization->applyScope($this, $action, $resource);
     }
@@ -156,7 +157,7 @@ trait AuthorizationEntityTrait
     /**
      * @inheritDoc
      */
-    public function getOriginalData()
+    public function getOriginalData(): ArrayAccess|array
     {
         return $this;
     }

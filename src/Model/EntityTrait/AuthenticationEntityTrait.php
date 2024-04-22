@@ -12,9 +12,9 @@ trait AuthenticationEntityTrait
     /**
      * Authentication\IdentityInterface method
      *
-     * @return int
+     * @return array|string|int|null
      */
-    public function getIdentifier()
+    public function getIdentifier(): array|string|int|null
     {
         return $this->id;
     }

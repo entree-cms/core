@@ -12,13 +12,6 @@ use Cake\View\Helper;
 class ConfigureHelper extends Helper
 {
     /**
-     * Default configuration.
-     *
-     * @var array<string, mixed>
-     */
-    protected $_defaultConfig = [];
-
-    /**
      * Read
      *
      * @param string|null $var Variable to obtain. Use '.' to access array elements.

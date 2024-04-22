@@ -30,7 +30,7 @@ class Role extends Entity
      *
      * @var array<string, bool>
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         '_translations' => true,
         'code' => true,
         'name' => true,
