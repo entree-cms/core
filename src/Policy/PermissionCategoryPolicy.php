@@ -5,6 +5,7 @@ namespace EntreeCore\Policy;
 
 use Authorization\IdentityInterface;
 use Authorization\Policy\BeforePolicyInterface;
+use Authorization\Policy\ResultInterface;
 use Cake\ORM\Locator\LocatorAwareTrait;
 use EntreeCore\Model\Entity\PermissionCategory;
 use EntreeCore\Model\Entity\User;
@@ -20,11 +21,11 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
      * Pre conditions
      *
      * @param ?\Authorization\IdentityInterface $user The user to check authorization
-     * @param \EntreeCore\Model\Entity\PermissionCategory $permissionCategory The permission category to be operated
+     * @param mixed $permissionCategory The permission category to be operated
      * @param string $action The action
-     * @return bool|void
+     * @return \Authorization\Policy\ResultInterface|bool|null
      */
-    public function before(?IdentityInterface $user, $permissionCategory, $action)
+    public function before(?IdentityInterface $user, mixed $permissionCategory, string $action): ResultInterface|bool|null
     {
         if (
             $user
@@ -34,6 +35,8 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
         ) {
             return true;
         }
+
+        return null;
     }
 
     /**

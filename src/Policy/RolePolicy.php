@@ -5,6 +5,7 @@ namespace EntreeCore\Policy;
 
 use Authorization\IdentityInterface;
 use Authorization\Policy\BeforePolicyInterface;
+use Authorization\Policy\ResultInterface;
 use Cake\ORM\Locator\LocatorAwareTrait;
 use EntreeCore\Model\Entity\Role;
 use EntreeCore\Model\Entity\User;
@@ -20,11 +21,11 @@ class RolePolicy implements BeforePolicyInterface
      * Pre conditions
      *
      * @param ?\Authorization\IdentityInterface $user The user to check authorization
-     * @param \EntreeCore\Model\Entity\Role $role The role to be operated
+     * @param mixed $role The role to be operated
      * @param string $action The action
-     * @return bool|void
+     * @return \Authorization\Policy\ResultInterface|bool|null
      */
-    public function before(?IdentityInterface $user, $role, $action)
+    public function before(?IdentityInterface $user, mixed $role, string $action): ResultInterface|bool|null
     {
         if (
             $user
@@ -34,6 +35,8 @@ class RolePolicy implements BeforePolicyInterface
         ) {
             return true;
         }
+
+        return null;
     }
 
     /**

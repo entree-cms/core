@@ -5,6 +5,7 @@ namespace EntreeCore\Policy;
 
 use Authorization\IdentityInterface;
 use Authorization\Policy\BeforePolicyInterface;
+use Authorization\Policy\ResultInterface;
 use EntreeCore\Model\Entity\User;
 
 /**
@@ -16,11 +17,11 @@ class UserPolicy implements BeforePolicyInterface
      * Pre conditions
      *
      * @param ?\Authorization\IdentityInterface $user The user to check authorization.
-     * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
+     * @param mixed $targetUser The user to be operated.
      * @param string $action The action
-     * @return bool|void
+     * @return \Authorization\Policy\ResultInterface|bool|null
      */
-    public function before(?IdentityInterface $user, $targetUser, $action)
+    public function before(?IdentityInterface $user, mixed $targetUser, string $action): ResultInterface|bool|null
     {
         if (
             $user
@@ -30,6 +31,8 @@ class UserPolicy implements BeforePolicyInterface
         ) {
             return true;
         }
+
+        return null;
     }
 
     /**
