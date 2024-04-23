@@ -272,7 +272,7 @@ class FormHelper extends BaseFormHelper
 
         $entity = $context->entity();
 
-        $table = TableRegistry::get($entity->getSource());
+        $table = TableRegistry::getTableLocator()->get($entity->getSource());
         if (
             !method_exists($table, 'isTranslationEnabled')
             || !property_exists($table, 'translationFields')
