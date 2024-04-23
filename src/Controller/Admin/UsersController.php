@@ -80,7 +80,7 @@ class UsersController extends AppController
      * @throws \Cake\Http\Exception\ForbiddenException
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    public function delete($userId)
+    public function delete(string $userId)
     {
         $user = $this->Users->get($userId, ['contain' => 'Roles']);
         if ($this->loginUser->cannot('delete', $user)) {
@@ -110,7 +110,7 @@ class UsersController extends AppController
      * @param string $userId The user ID
      * @return \Cake\Http\Response|null|void Renders view
      */
-    public function edit($userId)
+    public function edit(string $userId)
     {
         $user = $this->Users->get($userId, ['contain' => ['Roles']]);
 
@@ -197,7 +197,7 @@ class UsersController extends AppController
      * @param array<string, mixed> $params Search parameters
      * @return array
      */
-    protected function makeWhereConds($params)
+    protected function makeWhereConds(array $params)
     {
         $keywordsStr = $params['kw'] ?? null;
         if (!is_string($keywordsStr)) {

@@ -86,7 +86,7 @@ class FormHelper extends BaseFormHelper
      * @return ?string
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    protected function getErrorMessage($field, $options): ?string
+    protected function getErrorMessage(string $field, array $options): ?string
     {
         $error = $options['error'] ?? $this->context()->error($field);
 
@@ -108,11 +108,11 @@ class FormHelper extends BaseFormHelper
     /**
      * Make value of class property
      *
-     * @param string|array|null $classes Classes
+     * @param array|string|null $classes Classes
      * @return string
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    protected function makeClass($classes): string
+    protected function makeClass(string|array|null $classes): string
     {
         if ($classes === null) {
             return '';
@@ -136,7 +136,7 @@ class FormHelper extends BaseFormHelper
      * @param string $field The field name
      * @return string
      */
-    protected function makeInputName($field)
+    protected function makeInputName(string $field): string
     {
         $hasBlackets = substr($field, -2) === '[]';
 
@@ -159,7 +159,7 @@ class FormHelper extends BaseFormHelper
      * @return ?string
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    protected function makeInputClass($field, $options)
+    protected function makeInputClass(string $field, array $options): ?string
     {
         $classes = $options['class'] ?? [];
         if (is_string($classes)) {
@@ -187,7 +187,7 @@ class FormHelper extends BaseFormHelper
      * @param array<string, mixed> $options Options list
      * @return string
      */
-    protected function makeExInputHtml($field, $options)
+    protected function makeExInputHtml(string $field, array $options): string
     {
         $options['class'] = $this->makeInputClass($field, $options);
         unset($options['container']);
@@ -207,7 +207,7 @@ class FormHelper extends BaseFormHelper
      * @param array<string, mixed> $options Options list
      * @return string|null
      */
-    protected function makeExLabelHtml($field, $options)
+    protected function makeExLabelHtml(string $field, array $options): ?string
     {
         $options += [
             'id' => null,
@@ -263,7 +263,7 @@ class FormHelper extends BaseFormHelper
      * @param array<string, mixed> $options Options list
      * @return string|null
      */
-    protected function makeTranslationsHtml($field, $options)
+    protected function makeTranslationsHtml(string $field, array $options): ?string
     {
         $context = $this->context();
         if (!method_exists($context, 'entity')) {

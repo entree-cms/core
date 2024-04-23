@@ -14,12 +14,12 @@ class Table extends BaseTable
     /**
      * @var array Fields to translate
      */
-    public static $translationFields = [];
+    public static array $translationFields = [];
 
     /**
      * @var bool Using translate behavior
      */
-    private $usingTranslation = false;
+    private bool $usingTranslation = false;
 
     /**
      * initialize callback
@@ -52,7 +52,7 @@ class Table extends BaseTable
      *
      * @return bool
      */
-    public function isTranslationEnabled()
+    public function isTranslationEnabled(): bool
     {
         return $this->usingTranslation;
     }

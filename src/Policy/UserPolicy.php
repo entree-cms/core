@@ -42,7 +42,7 @@ class UserPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canAdd(User $user, User $targetUser)
+    public function canAdd(User $user, User $targetUser): bool
     {
         return false;
     }
@@ -54,7 +54,7 @@ class UserPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canDelete(User $user, User $targetUser)
+    public function canDelete(User $user, User $targetUser): bool
     {
         return $user->can('delete users') && $user->id !== $targetUser->id;
     }
@@ -66,7 +66,7 @@ class UserPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canEdit(User $user, User $targetUser)
+    public function canEdit(User $user, User $targetUser): bool
     {
         return false;
     }
@@ -78,7 +78,7 @@ class UserPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\User $targetUser The user to be operated.
      * @return bool
      */
-    public function canEditRole(User $user, User $targetUser)
+    public function canEditRole(User $user, User $targetUser): bool
     {
         return $user->can('edit users') && $user->id !== $targetUser->id;
     }
@@ -90,7 +90,7 @@ class UserPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\User $targetUser The User
      * @return bool
      */
-    public function canView(User $user, User $targetUser)
+    public function canView(User $user, User $targetUser): bool
     {
         return false;
     }

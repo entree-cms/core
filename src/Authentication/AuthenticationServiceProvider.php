@@ -8,6 +8,7 @@ use Authentication\AuthenticationServiceInterface;
 use Authentication\AuthenticationServiceProviderInterface;
 use Cake\Core\Configure;
 use Cake\Routing\Router;
+use EntreeCore\Model\Table\UsersTable;
 use Psr\Http\Message\ServerRequestInterface;
 
 class AuthenticationServiceProvider implements AuthenticationServiceProviderInterface
@@ -40,7 +41,7 @@ class AuthenticationServiceProvider implements AuthenticationServiceProviderInte
             'resolver' => [
                 'className' => 'Authentication.Orm',
                 'finder' => 'authentication',
-                'userModel' => \EntreeCore\Model\Table\UsersTable::class,
+                'userModel' => UsersTable::class,
             ],
         ]);
 

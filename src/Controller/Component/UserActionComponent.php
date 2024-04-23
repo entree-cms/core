@@ -4,8 +4,12 @@ declare(strict_types=1);
 namespace EntreeCore\Controller\Component;
 
 use Cake\Controller\Component;
+use Cake\Controller\Controller;
 use Cake\Core\Configure;
+use Cake\Http\ServerRequest;
 use Cake\ORM\Locator\LocatorAwareTrait;
+use Cake\ORM\Table;
+use EntreeCore\Model\Entity\User;
 
 /**
  * UserAction component
@@ -17,22 +21,22 @@ class UserActionComponent extends Component
     /**
      * @var \Cake\Controller\Controller $controller The controller this component is bound to.
      */
-    protected $controller;
+    protected Controller $controller;
 
     /**
      * @var \EntreeCore\Model\Entity\User $loginUser The loginUser
      */
-    protected $loginUser;
+    protected User $loginUser;
 
     /**
      * @var \Cake\Http\ServerRequest $request The request
      */
-    protected $request;
+    protected ServerRequest $request;
 
     /**
      * @var \Cake\ORM\Table $Users The users table
      */
-    protected $Users;
+    protected Table $Users;
 
     /**
      * Initialize

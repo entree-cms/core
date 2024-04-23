@@ -36,7 +36,7 @@ class PermissionsTable extends Table
     /**
      * @var array Fields to translate
      */
-    public static $translationFields = ['name', 'description'];
+    public static array $translationFields = ['name', 'description'];
 
     /**
      * initialize callback

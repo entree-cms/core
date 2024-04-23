@@ -46,7 +46,7 @@ class RolePolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Role $role The role to be operated
      * @return bool
      */
-    public function canAdd(User $user, Role $role)
+    public function canAdd(User $user, Role $role): bool
     {
         return false;
     }
@@ -58,7 +58,7 @@ class RolePolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Role $role The role to be operated
      * @return bool
      */
-    public function canEdit(User $user, Role $role)
+    public function canEdit(User $user, Role $role): bool
     {
         return false;
     }
@@ -70,7 +70,7 @@ class RolePolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Role $role The role to be operated.
      * @return bool
      */
-    public function canDelete(User $user, Role $role)
+    public function canDelete(User $user, Role $role): bool
     {
         if ($user->cannot('delete roles')) {
             return false;

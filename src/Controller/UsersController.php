@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace EntreeCore\Controller;
 
+use Authentication\Authenticator\ResultInterface;
 use Cake\Core\Configure;
 use Cake\Http\Exception\InternalErrorException;
 use Cake\Http\Exception\NotFoundException;
@@ -39,7 +40,7 @@ class UsersController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When there is no first record.
      * @throws \Cake\Http\Exception\NotFoundException When file not found
      */
-    public function avatar($fileName)
+    public function avatar(string $fileName)
     {
         $this->Authorization->skipAuthorization();
 
@@ -108,7 +109,7 @@ class UsersController extends AppController
      * @param \Authentication\Authenticator\ResultInterface $result The result of the last authenticate
      * @return \Psr\Http\Message\UriInterface|array|string
      */
-    protected function getLoginRedirectUrl($result)
+    protected function getLoginRedirectUrl(ResultInterface $result)
     {
         $redirect = $this->request->getQuery('redirect');
         if ($redirect) {

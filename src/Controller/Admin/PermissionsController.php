@@ -68,7 +68,7 @@ class PermissionsController extends AppController
      * @throws \Cake\Http\Exception\ForbiddenException
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    public function delete($permissionId)
+    public function delete(string $permissionId)
     {
         $permission = $this->Permissions->get($permissionId);
         if ($this->loginUser->cannot('delete', $permission)) {
@@ -99,7 +99,7 @@ class PermissionsController extends AppController
      * @return \Cake\Http\Response|null|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($permissionId)
+    public function edit(string $permissionId)
     {
         if ($this->Permissions->hasBehavior('Translate')) {
             $this->Permissions->setLocale($this->defaultLocale);

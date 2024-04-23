@@ -47,7 +47,7 @@ class NullableBehavior extends Behavior
      * @param \ArrayObject $options The options
      * @return void
      */
-    public function beforeMarshal(EventInterface $event, ArrayObject $data, ArrayObject $options)
+    public function beforeMarshal(EventInterface $event, ArrayObject $data, ArrayObject $options): void
     {
         // Convert blank string into NULL
         foreach ($this->getConfig('fields') as $field) {

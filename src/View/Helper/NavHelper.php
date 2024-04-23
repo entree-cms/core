@@ -14,7 +14,7 @@ class NavHelper extends Helper
      * @param array $options The options
      * @return string
      */
-    public function convertItemsToHtml(array $navItems, array $options = [])
+    public function convertItemsToHtml(array $navItems, array $options = []): string
     {
         $options += [
             'level' => 1,

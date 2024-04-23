@@ -18,7 +18,7 @@ class ConfigureHelper extends Helper
      * @param mixed $default The return value when the configure does not exist
      * @return mixed
      */
-    public function read(?string $var = null, $default = null)
+    public function read(?string $var = null, mixed $default = null): mixed
     {
         return Configure::read($var, $default);
     }

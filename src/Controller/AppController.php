@@ -6,8 +6,10 @@ namespace EntreeCore\Controller;
 use App\Controller\AppController as BaseController;
 use Cake\Core\Configure;
 use Cake\Http\Exception\InternalErrorException;
+use Cake\Http\Session;
 use Cake\I18n\I18n;
 use Cake\Routing\Router;
+use EntreeCore\Model\Entity\User;
 
 /**
  * Application controller
@@ -20,17 +22,17 @@ class AppController extends BaseController
     /**
      * @var ?string Default locale
      */
-    protected $defaultLocale;
+    protected ?string $defaultLocale = null;
 
     /**
      * @var ?\EntreeCore\Model\Entity\User The login user
      */
-    protected $loginUser;
+    protected ?User $loginUser = null;
 
     /**
      * @var \Cake\Http\Session|null Session
      */
-    protected $session;
+    protected ?Session $session = null;
 
     /**
      * Initialization hook method.
@@ -91,7 +93,7 @@ class AppController extends BaseController
      * @param string|null $prefix The prefix
      * @return void
      */
-    protected function configureNavItems($prefix = null): void
+    protected function configureNavItems(?string $prefix = null): void
     {
         if (method_exists(parent::class, 'configureNavItems')) {
             parent::configureNavItems($prefix);

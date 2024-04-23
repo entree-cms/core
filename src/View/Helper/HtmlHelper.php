@@ -13,7 +13,7 @@ class HtmlHelper extends BaseHelper
      * @param array|string|null $attrs Attributes list
      * @return string
      */
-    public function makeAttrsText($attrs)
+    public function makeAttrsText(array|string|null $attrs): string
     {
         if (is_string($attrs)) {
             return $attrs;

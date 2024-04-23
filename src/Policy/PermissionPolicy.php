@@ -45,7 +45,7 @@ class PermissionPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Permission $permission The permission to be operated
      * @return bool
      */
-    public function canAdd(User $user, Permission $permission)
+    public function canAdd(User $user, Permission $permission): bool
     {
         return false;
     }
@@ -57,7 +57,7 @@ class PermissionPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Permission $permission The permission to be operated.
      * @return bool
      */
-    public function canDelete(User $user, Permission $permission)
+    public function canDelete(User $user, Permission $permission): bool
     {
         return false;
     }
@@ -69,7 +69,7 @@ class PermissionPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\Permission $permission The permission to be operated
      * @return bool
      */
-    public function canEdit(User $user, Permission $permission)
+    public function canEdit(User $user, Permission $permission): bool
     {
         return false;
     }

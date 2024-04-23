@@ -42,14 +42,14 @@ class RolesTable extends Table
     /**
      * @var array Privileged role IDs
      */
-    public static $privilegedIds = [
+    public static array $privilegedIds = [
         self::ADMIN,
     ];
 
     /**
      * @var array Fields to translate
      */
-    public static $translationFields = ['name', 'description'];
+    public static array $translationFields = ['name', 'description'];
 
     /**
      * initialize callback
@@ -153,7 +153,7 @@ class RolesTable extends Table
      * @param \ArrayObject $options The options
      * @return void
      */
-    public function beforeSave(Event $event, Role $role, ArrayObject $options)
+    public function beforeSave(Event $event, Role $role, ArrayObject $options): void
     {
         if ($role->isDirty('permissions') && $role->is_privileged) {
             $role->permissions = [];

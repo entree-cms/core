@@ -25,8 +25,11 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
      * @param string $action The action
      * @return \Authorization\Policy\ResultInterface|bool|null
      */
-    public function before(?IdentityInterface $user, mixed $permissionCategory, string $action): ResultInterface|bool|null
-    {
+    public function before(
+        ?IdentityInterface $user,
+        mixed $permissionCategory,
+        string $action
+    ): ResultInterface|bool|null {
         if (
             $user
             && method_exists($user, 'hasRole')
@@ -46,7 +49,7 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\PermissionCategory $permissionCategory The permission category to be operated
      * @return bool
      */
-    public function canAdd(User $user, PermissionCategory $permissionCategory)
+    public function canAdd(User $user, PermissionCategory $permissionCategory): bool
     {
         return false;
     }
@@ -58,7 +61,7 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\PermissionCategory $permissionCategory The permission category to be operated.
      * @return bool
      */
-    public function canDelete(User $user, PermissionCategory $permissionCategory)
+    public function canDelete(User $user, PermissionCategory $permissionCategory): bool
     {
         if ($user->cannot('manage permissions')) {
             return false;
@@ -79,7 +82,7 @@ class PermissionCategoryPolicy implements BeforePolicyInterface
      * @param \EntreeCore\Model\Entity\PermissionCategory $permissionCategory The permission category to be operated
      * @return bool
      */
-    public function canEdit(User $user, PermissionCategory $permissionCategory)
+    public function canEdit(User $user, PermissionCategory $permissionCategory): bool
     {
         return false;
     }

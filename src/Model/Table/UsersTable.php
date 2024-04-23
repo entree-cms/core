@@ -39,7 +39,7 @@ class UsersTable extends Table
      *
      * @var array<string>
      */
-    protected $avatarMimeTypes = [
+    protected array $avatarMimeTypes = [
         'jpg' => 'image/jpeg',
         'gif' => 'image/gif',
         'png' => 'image/png',
@@ -154,7 +154,7 @@ class UsersTable extends Table
      * @param \ArrayObject $options The options
      * @return void
      */
-    public function afterSaveCommit(Event $event, User $user, ArrayObject $options)
+    public function afterSaveCommit(Event $event, User $user, ArrayObject $options): void
     {
         // Delete old avatar file
         if ($user->isDirty('avatar')) {
@@ -176,7 +176,7 @@ class UsersTable extends Table
      * @param \ArrayObject $options The options
      * @return void
      */
-    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options): void
     {
         $password = $data['password'] ?? null;
         if (is_string($password)) {
@@ -201,7 +201,7 @@ class UsersTable extends Table
      * @param \ArrayObject $options The options
      * @return void
      */
-    public function beforeSave(Event $event, User $user, ArrayObject $options)
+    public function beforeSave(Event $event, User $user, ArrayObject $options): void
     {
         $avatarFile = $user->avatar_file ?? null;
         if ($avatarFile && $avatarFile->getError() === UPLOAD_ERR_OK) {
@@ -250,7 +250,7 @@ class UsersTable extends Table
      * @param string $mime The mime type
      * @return string|false
      */
-    protected function getExtention($mime)
+    protected function getExtention(string $mime): string|false
     {
         $ext = array_search($mime, $this->avatarMimeTypes);
         if (!is_string($ext)) {
@@ -268,7 +268,7 @@ class UsersTable extends Table
      * @return string
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    protected function makeAvatarFilePath($user, $mime): string
+    protected function makeAvatarFilePath(User $user, string $mime): string
     {
         $ext = $this->getExtention($mime);
         if ($ext === false) {

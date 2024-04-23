@@ -68,7 +68,7 @@ class RolesController extends AppController
      * @throws \Cake\Http\Exception\ForbiddenException
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    public function delete($roleId)
+    public function delete(string $roleId)
     {
         $role = $this->Roles->get($roleId);
         if ($this->loginUser->cannot('delete', $role)) {
@@ -99,7 +99,7 @@ class RolesController extends AppController
      * @return \Cake\Http\Response|null|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException
      */
-    public function edit($roleId)
+    public function edit(string $roleId)
     {
         if ($this->Roles->hasBehavior('Translate')) {
             $this->Roles->setLocale($this->defaultLocale);

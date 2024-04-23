@@ -22,7 +22,7 @@ trait AuthorizationEntityTrait
      * @param mixed $resource The resource
      * @return bool
      */
-    public function cannot(string $action, $resource = null): bool
+    public function cannot(string $action, mixed $resource = null): bool
     {
         return !$this->can($action, $resource);
     }
@@ -30,11 +30,11 @@ trait AuthorizationEntityTrait
     /**
      * Has permission.
      *
-     * @param string|array $permCodes Permission code(s)
+     * @param array|string $permCodes Permission code(s)
      * @return bool
      * @throws \Cake\Http\Exception\InternalErrorException When pass invalid permission code(s) to argument.
      */
-    public function hasPermission($permCodes)
+    public function hasPermission(string|array $permCodes): bool
     {
         if ($this->hasRole('admin')) {
             return true;
@@ -66,11 +66,11 @@ trait AuthorizationEntityTrait
     /**
      * Has role.
      *
-     * @param string|array $roleCodes Role code(s)
+     * @param array|string $roleCodes Role code(s)
      * @return bool
      * @throws \Cake\Http\Exception\InternalErrorException When pass invalid role code(s) to argument.
      */
-    public function hasRole($roleCodes)
+    public function hasRole(string|array $roleCodes): bool
     {
         // Get owned role codes
         $ownedRoles = $this->roles ?? null;
@@ -100,7 +100,7 @@ trait AuthorizationEntityTrait
      * @return array
      * @throws \Cake\Http\Exception\InternalErrorException
      */
-    private function formatCodes($codes)
+    private function formatCodes(array|string $codes): array
     {
         if (is_string($codes)) {
             $codes = explode('|', $codes);
@@ -168,7 +168,7 @@ trait AuthorizationEntityTrait
      * @param \Authorization\AuthorizationServiceInterface $service The service
      * @return self
      */
-    public function setAuthorization(AuthorizationServiceInterface $service)
+    public function setAuthorization(AuthorizationServiceInterface $service): self
     {
         $this->authorization = $service;
 
