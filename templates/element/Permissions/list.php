@@ -12,9 +12,9 @@
         <th><?= $this->Paginator->sort('name', __d('permissions', 'Name')) ?></th>
         <th><?= $this->Paginator->sort('code', __d('permissions', 'Code')) ?></th>
         <th><?= $this->Paginator->sort('description', __d('permissions', 'Description')) ?></th>
-        <th><?= $this->Paginator->sort('created', __('Created')) ?></th>
-        <th><?= $this->Paginator->sort('modified', __('Modified')) ?></th>
-        <th><?= __('Actions') ?></th>
+        <th><?= $this->Paginator->sort('created', __d('entree', 'Created')) ?></th>
+        <th><?= $this->Paginator->sort('modified', __d('entree', 'Modified')) ?></th>
+        <th><?= __d('entree', 'Actions') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +52,7 @@
           <td>
             <?php $url = $this->Url->build(['action' => 'edit', $permission->id]); ?>
             <a href="<?= $url ?>" class="btn btn-sm btn-primary">
-              <?= __('Edit') ?>
+              <?= __d('entree', 'Edit') ?>
             </a>
           </td>
         </tr>

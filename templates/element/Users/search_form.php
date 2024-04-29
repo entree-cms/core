@@ -3,14 +3,14 @@
     <!-- Keyword -->
     <?= $this->Form->exInput('kw', [
       'inputContainer' => ['class' => 'flex-fill'],
-      'placeholder' => __('Keyword'),
+      'placeholder' => __d('entree', 'Keyword'),
       'prepend' => '<i class="fa-solid fa-magnifying-glass"></i>',
       'val' => $this->request->getQuery('kw'),
     ]) ?>
     <!-- Action -->
     <div>
       <button type="submit" class="btn btn-outline-secondary">
-        <?= __('Search') ?>
+        <?= __d('entree', 'Search') ?>
       </button>
     </div>
   </div>

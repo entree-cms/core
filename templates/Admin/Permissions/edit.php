@@ -4,7 +4,7 @@
  * @var \EntreeCore\View\AppView $this The view
  */
 
- $pageTitle = __('Edit {0}', strtolower(__d('permissions', 'Permission')));
+ $pageTitle = __d('entree', 'Edit {0}', strtolower(__d('permissions', 'Permission')));
 $this->assign('title',  $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.Permissions/breadcrumbs');
@@ -36,6 +36,6 @@ $this->element('EntreeCore.Permissions/breadcrumbs');
 <!-- Actions -->
 <div class="py-5 text-center">
   <button type="submit" class="btn btn-success" form="form-permission">
-    <?= __('Save') ?>
+    <?= __d('entree', 'Save') ?>
   </button>
 </div>

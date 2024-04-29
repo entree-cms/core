@@ -57,11 +57,11 @@ class UsersController extends AppController
             }
             $user = $this->Users->patchEntity($user, $postData);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The {0} has been saved successfully.', strtolower(__d('users', 'User'))));
+                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', strtolower(__d('users', 'User'))));
 
                 return $this->redirect(['action' => 'edit', $user->id]);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __d('users', 'User')));
+            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', __d('users', 'User')));
         }
 
         $this->set(compact('user'));
@@ -89,7 +89,7 @@ class UsersController extends AppController
 
         if ($user->deleted !== null) {
             $this->Flash->warning(
-                __('The {0} has already been deleted.', strtolower(__d('users', 'User')))
+                __d('entree', 'The {0} has already been deleted.', strtolower(__d('users', 'User')))
             );
         } else {
             $user->deleted = FrozenTime::now();
@@ -97,7 +97,7 @@ class UsersController extends AppController
                 throw new InternalErrorException();
             }
             $this->Flash->success(
-                __('The {0} has been deleted.', strtolower(__d('users', 'User')))
+                __d('entree', 'The {0} has been deleted.', strtolower(__d('users', 'User')))
             );
         }
 
@@ -127,11 +127,11 @@ class UsersController extends AppController
                     $this->Authentication->setIdentity($user);
                 }
 
-                $this->Flash->success(__('The {0} has been saved successfully.', strtolower(__d('users', 'User'))));
+                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', strtolower(__d('users', 'User'))));
 
                 return $this->redirect(['action' => 'edit', $user->id]);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', strtolower(__d('users', 'User'))));
+            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', strtolower(__d('users', 'User'))));
         }
 
         $this->set(compact('user'));

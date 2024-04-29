@@ -15,10 +15,10 @@ $params[] = ['title' => __d('roles', 'Roles'), 'url' => $url];
 // Current
 switch ($action) {
   case 'add':
-    $params[] = ['title' => __('Add new')];
+    $params[] = ['title' => __d('entree', 'Add new')];
     break;
   case 'edit':
-    $params[] = ['title' => __('Edit')];
+    $params[] = ['title' => __d('entree', 'Edit')];
     break;
 }
 

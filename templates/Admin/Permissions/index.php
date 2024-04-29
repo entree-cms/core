@@ -23,7 +23,7 @@ $this->element('EntreeCore.Permissions/breadcrumbs');
 
       <!-- Add new -->
       <?php $url = $this->Url->build(['action' => 'add']) ?>
-      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __('Add new') ?>">
+      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('entree', 'Add new') ?>">
         <i class="fas fa-plus"></i>
       </a>
     </nav>

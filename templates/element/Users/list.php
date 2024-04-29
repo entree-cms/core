@@ -11,9 +11,9 @@
         <th><?= $this->Paginator->sort('username', __d('users', 'Username')) ?></th>
         <th><?= $this->Paginator->sort('full_name', __d('users', 'Full name')) ?></th>
         <th><?= __d('users', 'Role') ?></th>
-        <th><?= $this->Paginator->sort('created', __('Created')) ?></th>
-        <th><?= $this->Paginator->sort('modified', __('Modified')) ?></th>
-        <th><?= __('Actions') ?></th>
+        <th><?= $this->Paginator->sort('created', __d('entree', 'Created')) ?></th>
+        <th><?= $this->Paginator->sort('modified', __d('entree', 'Modified')) ?></th>
+        <th><?= __d('entree', 'Actions') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -56,7 +56,7 @@
           <td>
             <?php $url = $this->Url->build(['action' => 'edit', $user->id]); ?>
             <a href="<?= $url ?>" class="btn btn-sm btn-primary">
-              <?= __('Edit') ?>
+              <?= __d('entree', 'Edit') ?>
             </a>
           </td>
         </tr>

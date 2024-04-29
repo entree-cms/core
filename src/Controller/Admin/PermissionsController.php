@@ -47,11 +47,11 @@ class PermissionsController extends AppController
         if ($this->request->is('post')) {
             $permission = $this->Permissions->patchEntity($permission, $this->request->getData());
             if ($this->Permissions->save($permission)) {
-                $this->Flash->success(__('The {0} has been saved successfully.', __d('permissions', 'Permission')));
+                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', __d('permissions', 'Permission')));
 
                 return $this->redirect(['action' => 'edit', $permission->id]);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __d('permissions', 'Permission')));
+            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', __d('permissions', 'Permission')));
         }
         $this->set(compact('permission'));
 
@@ -77,7 +77,7 @@ class PermissionsController extends AppController
 
         if ($permission->deleted !== null) {
             $this->Flash->warning(
-                __('The {0} has already been deleted.', strtolower(__d('permissions', 'Permission')))
+                __d('entree', 'The {0} has already been deleted.', strtolower(__d('permissions', 'Permission')))
             );
         } else {
             $permission->deleted = FrozenTime::now();
@@ -85,7 +85,7 @@ class PermissionsController extends AppController
                 throw new InternalErrorException();
             }
             $this->Flash->success(
-                __('The {0} has been deleted.', strtolower(__d('permissions', 'Permission')))
+                __d('entree', 'The {0} has been deleted.', strtolower(__d('permissions', 'Permission')))
             );
         }
 
@@ -109,11 +109,11 @@ class PermissionsController extends AppController
         if ($this->request->is(['post', 'put'])) {
             $permission = $this->Permissions->patchEntity($permission, $this->request->getData());
             if ($this->Permissions->save($permission)) {
-                $this->Flash->success(__('The {0} has been saved successfully.', __d('permissions', 'Permission')));
+                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', __d('permissions', 'Permission')));
 
                 return $this->redirect(['action' => 'edit', $permission->id]);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', __d('permissions', 'Permission')));
+            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', __d('permissions', 'Permission')));
         }
         $this->set(compact('permission'));
 

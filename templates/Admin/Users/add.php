@@ -4,7 +4,7 @@
  * @var \EntreeCore\View\AppView $this The viewer
  */
 
-$pageTitle = __('Add {0}', strtolower(__d('users', 'User')));
+$pageTitle = __d('entree', 'Add {0}', strtolower(__d('users', 'User')));
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->Html->script([
@@ -33,7 +33,7 @@ $this->element('EntreeCore.Users/breadcrumbs');
       <!-- Actions -->
       <div class="py-5 text-center">
         <button type="submit" class="btn btn-success">
-          <?= __('Save') ?>
+          <?= __d('entree', 'Save') ?>
         </button>
       </div>
     </div>

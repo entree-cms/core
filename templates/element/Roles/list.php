@@ -13,7 +13,7 @@
         <th><?= $this->Paginator->sort('description', __d('roles', 'Description')) ?></th>
         <th><?= $this->Paginator->sort('created', __d('roles', 'Created')) ?></th>
         <th><?= $this->Paginator->sort('modified', __d('roles', 'Modified')) ?></th>
-        <th><?= __('Actions') ?></th>
+        <th><?= __d('entree', 'Actions') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -48,7 +48,7 @@
             <!-- Edit -->
             <?php $url = $this->Url->build(['action' => 'edit', $role->id]) ?>
             <a href="<?= $url ?>" class="btn btn-sm btn-primary">
-              <?= __('Edit') ?>
+              <?= __d('entree', 'Edit') ?>
             </a>
           </td>
         </tr>
