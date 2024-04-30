@@ -5,7 +5,7 @@ namespace EntreeCore\Controller\Admin;
 
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\InternalErrorException;
-use Cake\I18n\FrozenTime;
+use Cake\I18n\DateTime;
 
 /**
  * PermissionCategories Controller
@@ -124,7 +124,7 @@ class PermissionCategoriesController extends AppController
                 strtolower(__d('permission_categories', 'Permission category'))
             ));
         } else {
-            $permissionCategory->deleted = FrozenTime::now();
+            $permissionCategory->deleted = DateTime::now();
             if (!$this->PermissionCategories->save($permissionCategory)) {
                 throw new InternalErrorException();
             }

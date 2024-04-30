@@ -13,9 +13,9 @@ use Cake\ORM\Entity;
  * @property int $permission_category_id
  * @property string $code
  * @property string $description
- * @property \Cake\I18n\FrozenTime|null $deleted
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property \Cake\I18n\DateTime|null $deleted
+ * @property \Cake\I18n\DateTime $created
+ * @property \Cake\I18n\DateTime $modified
  *
  * @property \EntreeCore\Model\Entity\PermissionCategory $permissionCategory
  * @property \EntreeCore\Model\Entity\Role[] $roles

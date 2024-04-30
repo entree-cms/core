@@ -6,7 +6,7 @@ namespace EntreeCore\Controller\Admin;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\InternalErrorException;
-use Cake\I18n\FrozenTime;
+use Cake\I18n\DateTime;
 use Cake\I18n\I18n;
 use EntreeCore\Model\Table\RolesTable;
 
@@ -92,7 +92,7 @@ class UsersController extends AppController
                 __d('entree', 'The {0} has already been deleted.', strtolower(__d('users', 'User')))
             );
         } else {
-            $user->deleted = FrozenTime::now();
+            $user->deleted = DateTime::now();
             if (!$this->Users->save($user)) {
                 throw new InternalErrorException();
             }

@@ -25,9 +25,9 @@ use EntreeCore\Model\EntityTrait\AuthorizationEntityTrait;
  * @property string|null $email
  * @property string|null $avatar
  * @property string|null $locale
- * @property \Cake\I18n\FrozenTime|null $deleted
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property \Cake\I18n\DateTime|null $deleted
+ * @property \Cake\I18n\DateTime $created
+ * @property \Cake\I18n\DateTime $modified
  *
  * @property string|null $avatar_path
  * @property string|null $full_name

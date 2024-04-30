@@ -13,9 +13,9 @@ use EntreeCore\Model\Table\RolesTable;
  * @property int $id
  * @property string $code
  * @property string $name
- * @property \Cake\I18n\FrozenTime|null $deleted
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property \Cake\I18n\DateTime|null $deleted
+ * @property \Cake\I18n\DateTime $created
+ * @property \Cake\I18n\DateTime $modified
  *
  * @property \EntreeCore\Model\Entity\Permission[] $permissions
  * @property array $permission_ids
