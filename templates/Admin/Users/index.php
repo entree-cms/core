@@ -34,7 +34,7 @@ $this->element('EntreeCore.Users/breadcrumbs');
 <div class="container-xxl">
   <?php if (count($users) === 0): ?>
     <div class="alert alert-secondary text-center">
-      <?= __("We couldn't find any {0}.", strtolower(__d('users', 'Users'))) ?>
+      <?= __d('entree', "We couldn't find any {0}.", strtolower(__d('users', 'Users'))) ?>
     </div>
   <?php else: ?>
     <?php $pagination = $this->element('EntreeCore.layout/pagination'); ?>

@@ -81,14 +81,16 @@ class UserActionComponent extends Component
                 if (property_exists($this->controller, 'Authentication')) {
                     $this->controller->Authentication->setIdentity($user);
                 }
-                $this->controller->Flash->success(__(
+                $this->controller->Flash->success(__d(
+                    'entree',
                     'The {0} has been saved successfully.',
                     strtolower(__d('users', 'User'))
                 ));
 
                 return $this->controller->redirect(['action' => $this->request->getParam('action')]);
             }
-            $this->controller->Flash->error(__(
+            $this->controller->Flash->error(__d(
+                'entree',
                 'The {0} could not be saved. Please, try again.',
                 strtolower(__d('users', 'User'))
             ));

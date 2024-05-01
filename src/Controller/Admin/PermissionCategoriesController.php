@@ -49,14 +49,16 @@ class PermissionCategoriesController extends AppController
                 $this->request->getData()
             );
             if ($this->PermissionCategories->save($permissionCategory)) {
-                $this->Flash->success(__(
+                $this->Flash->success(__d(
+                    'entree',
                     'The {0} has been saved successfully.',
                     __d('permission_categories', 'Permission category')
                 ));
 
                 return $this->redirect(['action' => 'edit', $permissionCategory->id]);
             }
-            $this->Flash->error(__(
+            $this->Flash->error(__d(
+                'entree',
                 'The {0} could not be saved. Please, try again.',
                 __d('permission_categories', 'Permission category')
             ));
@@ -86,14 +88,16 @@ class PermissionCategoriesController extends AppController
                 $this->request->getData()
             );
             if ($this->PermissionCategories->save($permissionCategory)) {
-                $this->Flash->success(__(
+                $this->Flash->success(__d(
+                    'entree',
                     'The {0} has been saved successfully.',
                     __d('permission_categories', 'Permission category')
                 ));
 
                 return $this->redirect(['action' => 'edit', $permissionCategory->id]);
             }
-            $this->Flash->error(__(
+            $this->Flash->error(__d(
+                'entree',
                 'The {0} could not be saved. Please, try again.',
                 __d('permission_categories', 'Permission category')
             ));
@@ -119,7 +123,8 @@ class PermissionCategoriesController extends AppController
         }
 
         if ($permissionCategory->deleted !== null) {
-            $this->Flash->warning(__(
+            $this->Flash->warning(__d(
+                'entree',
                 'The {0} has already been deleted.',
                 strtolower(__d('permission_categories', 'Permission category'))
             ));
@@ -128,7 +133,8 @@ class PermissionCategoriesController extends AppController
             if (!$this->PermissionCategories->save($permissionCategory)) {
                 throw new InternalErrorException();
             }
-            $this->Flash->success(__(
+            $this->Flash->success(__d(
+                'entree',
                 'The {0} has been deleted.',
                 strtolower(__d('permission_categories', 'Permission category'))
             ));
