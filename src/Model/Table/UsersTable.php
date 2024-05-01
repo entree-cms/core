@@ -7,7 +7,7 @@ use ArrayObject;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Http\Exception\InternalErrorException;
-use Cake\ORM\Query;
+use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\Utility\Text;
 use Cake\Validation\Validator;
@@ -218,11 +218,11 @@ class UsersTable extends Table
     /**
      * For authentication
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param \Cake\ORM\Query\SelectQuery $query The query
      * @param array $options The options
-     * @return \Cake\ORM\Query
+     * @return \Cake\ORM\Query\SelectQuery
      */
-    public function findAuthentication(Query $query, array $options): Query
+    public function findAuthentication(SelectQuery $query): SelectQuery
     {
         return $query->find('notDeleted')
             ->contain(['Roles' => ['Permissions'],]);
@@ -231,11 +231,11 @@ class UsersTable extends Table
     /**
      * Find not deleted
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param \Cake\ORM\Query\SelectQuery $query The query
      * @param array $options The options
-     * @return \Cake\ORM\Query
+     * @return \Cake\ORM\Query\SelectQuery
      */
-    public function findNotDeleted(Query $query, array $options): Query
+    public function findNotDeleted(SelectQuery $query): SelectQuery
     {
         return $query->where(['Users.deleted IS' => null]);
     }

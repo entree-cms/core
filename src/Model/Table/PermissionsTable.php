@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace EntreeCore\Model\Table;
 
-use Cake\ORM\Query;
+use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
 use EntreeCore\ORM\Table;
@@ -26,8 +26,8 @@ use EntreeCore\ORM\Table;
  * @method \EntreeCore\Model\Entity\Permission[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
  * @method \EntreeCore\Model\Entity\Permission[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \EntreeCore\Model\Entity\Permission[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
- * @method \Cake\ORM\Query findByPermissionCategoryId($id)
- * @method \Cake\ORM\Query findDetailById($id)
+ * @method \Cake\ORM\Query\SelectQuery findByPermissionCategoryId($id)
+ * @method \Cake\ORM\Query\SelectQuery findDetailById($id)
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\TranslateBehavior
  */
@@ -147,11 +147,10 @@ class PermissionsTable extends Table
     /**
      * Find detail
      *
-     * @param \Cake\ORM\Query $query The query
-     * @param array $options The options
-     * @return \Cake\ORM\Query
+     * @param \Cake\ORM\Query\SelectQuery $query The query
+     * @return \Cake\ORM\Query\SelectQuery
      */
-    public function findDetail(Query $query, array $options): Query
+    public function findDetail(SelectQuery $query): SelectQuery
     {
         if ($this->isTranslationEnabled()) {
             $query->find('translations');
@@ -163,11 +162,10 @@ class PermissionsTable extends Table
     /**
      * Find not deleted
      *
-     * @param \Cake\ORM\Query $query The query
-     * @param array $options The options
-     * @return \Cake\ORM\Query
+     * @param \Cake\ORM\Query\SelectQuery $query The query
+     * @return \Cake\ORM\Query\SelectQuery
      */
-    public function findNotDeleted(Query $query, array $options): Query
+    public function findNotDeleted(SelectQuery $query): SelectQuery
     {
         return $query->where(['Permissions.deleted IS' => null]);
     }
