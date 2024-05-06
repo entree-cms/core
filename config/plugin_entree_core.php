@@ -11,6 +11,7 @@ return [
         ],
 
         'Admin' => [
+            'base' => 'admin-12345',
             // Navigation items
             'navItems' => [
                 'home' => [
@@ -39,5 +40,13 @@ return [
                 ],
             ],
         ],
+
+        'Api' => [
+            'base' => 'api',
+        ],
+
+        'Site' => [
+            'base' => '',
+        ]
     ],
 ];
