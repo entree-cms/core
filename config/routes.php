@@ -1,7 +1,6 @@
 <?php
 
 use Cake\Core\Configure;
-use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 
 return static function (RouteBuilder $routes) {
@@ -9,7 +8,7 @@ return static function (RouteBuilder $routes) {
      * Admin
      */
     (function () use ($routes) {
-        $adminBase = Configure::read('Entree.Admin.base');
+        $adminBase = Configure::read('Entree.Admin.base', Configure::read('EntreeCore.Admin.base'));
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Admin'];
         // Home
         $routes->connect("{$adminBase}/", ['controller' => 'Home', 'action' => 'index'] + $params);
@@ -41,7 +40,7 @@ return static function (RouteBuilder $routes) {
      * Api
      */
     (function () use ($routes) {
-        $apiBase = Configure::read('Entree.Api.base');
+        $apiBase = Configure::read('Entree.Api.base', Configure::read('EntreeCore.Api.base'));
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Api'];
         // Configurations
         $routes->connect("{$apiBase}/configs/set-locale", ['controller' => 'Configs', 'action' => 'setLocale'] + $params);
@@ -51,7 +50,7 @@ return static function (RouteBuilder $routes) {
      * Site
      */
     (function () use ($routes) {
-        $siteBase = Configure::read('Entree.Site.base');
+        $siteBase = Configure::read('Entree.Site.base', Configure::read('EntreeCore.Site.base'));
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Site'];
 
         $routes->connect("{$siteBase}/", ['controller' => 'Home', 'action' => 'index'] + $params);
