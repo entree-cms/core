@@ -13,7 +13,7 @@ function exImplode(string $separator, $values): string
     $output = [];
     foreach ($values as $value) {
         if (is_iterable($value)) {
-            $value = exImplode($value);
+            $value = exImplode($separator, $value);
         }
         $output[] = $value;
     }
