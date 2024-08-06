@@ -47,11 +47,11 @@ class RolesController extends AppController
         if ($this->request->is('post')) {
             $role = $this->Roles->patchEntity($role, $this->request->getData());
             if ($this->Roles->save($role)) {
-                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', __d('roles', 'Role')));
+                $this->Flash->success(__d('ecr_common', 'The {0} has been saved successfully.', __d('ecr_roles', 'Role')));
 
                 return $this->redirect(['action' => 'edit', $role->id]);
             }
-            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', __d('roles', 'Role')));
+            $this->Flash->error(__d('ecr_common', 'The {0} could not be saved. Please, try again.', __d('ecr_roles', 'Role')));
         }
         $this->set(compact('role'));
 
@@ -77,7 +77,7 @@ class RolesController extends AppController
 
         if ($role->deleted !== null) {
             $this->Flash->warning(
-                __d('entree', 'The {0} has already been deleted.', strtolower(__d('roles', 'Role')))
+                __d('ecr_common', 'The {0} has already been deleted.', strtolower(__d('ecr_roles', 'Role')))
             );
         } else {
             $role->deleted = DateTime::now();
@@ -85,7 +85,7 @@ class RolesController extends AppController
                 throw new InternalErrorException();
             }
             $this->Flash->success(
-                __d('entree', 'The {0} has been deleted.', strtolower(__d('roles', 'Role')))
+                __d('ecr_common', 'The {0} has been deleted.', strtolower(__d('ecr_roles', 'Role')))
             );
         }
 
@@ -111,11 +111,11 @@ class RolesController extends AppController
             $data['permissions']['_ids'] = $this->request->getData('permissions._ids', []);
             $role = $this->Roles->patchEntity($role, $data);
             if ($this->Roles->save($role)) {
-                $this->Flash->success(__d('entree', 'The {0} has been saved successfully.', __d('roles', 'Role')));
+                $this->Flash->success(__d('ecr_common', 'The {0} has been saved successfully.', __d('ecr_roles', 'Role')));
 
                 return $this->redirect(['action' => 'edit', $role->id]);
             }
-            $this->Flash->error(__d('entree', 'The {0} could not be saved. Please, try again.', __d('roles', 'Role')));
+            $this->Flash->error(__d('ecr_common', 'The {0} could not be saved. Please, try again.', __d('ecr_roles', 'Role')));
         }
         $this->set(compact('role'));
 

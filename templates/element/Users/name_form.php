@@ -3,7 +3,7 @@
     <?php $field = "{$prefix}_name"; ?>
     <?php $label = ucfirst($prefix) . ' name'; ?>
     <?= $this->Form->exControl($field, [
-      'label' => __d('users', $label),
+      'label' => __d('ecr_users', $label),
       'container' => ['class' => 'w-100'],
     ]) ?>
   <?php endforeach; ?>

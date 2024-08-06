@@ -52,7 +52,7 @@ class PermissionCategoriesController extends AppController
                 $this->Flash->success(__d(
                     'entree',
                     'The {0} has been saved successfully.',
-                    __d('permission_categories', 'Permission category')
+                    __d('ecr_permission_categories', 'Permission category')
                 ));
 
                 return $this->redirect(['action' => 'edit', $permissionCategory->id]);
@@ -60,7 +60,7 @@ class PermissionCategoriesController extends AppController
             $this->Flash->error(__d(
                 'entree',
                 'The {0} could not be saved. Please, try again.',
-                __d('permission_categories', 'Permission category')
+                __d('ecr_permission_categories', 'Permission category')
             ));
         }
         $this->set(compact('permissionCategory'));
@@ -91,7 +91,7 @@ class PermissionCategoriesController extends AppController
                 $this->Flash->success(__d(
                     'entree',
                     'The {0} has been saved successfully.',
-                    __d('permission_categories', 'Permission category')
+                    __d('ecr_permission_categories', 'Permission category')
                 ));
 
                 return $this->redirect(['action' => 'edit', $permissionCategory->id]);
@@ -99,7 +99,7 @@ class PermissionCategoriesController extends AppController
             $this->Flash->error(__d(
                 'entree',
                 'The {0} could not be saved. Please, try again.',
-                __d('permission_categories', 'Permission category')
+                __d('ecr_permission_categories', 'Permission category')
             ));
         }
         $this->set(compact('permissionCategory'));
@@ -126,7 +126,7 @@ class PermissionCategoriesController extends AppController
             $this->Flash->warning(__d(
                 'entree',
                 'The {0} has already been deleted.',
-                strtolower(__d('permission_categories', 'Permission category'))
+                strtolower(__d('ecr_permission_categories', 'Permission category'))
             ));
         } else {
             $permissionCategory->deleted = DateTime::now();
@@ -136,7 +136,7 @@ class PermissionCategoriesController extends AppController
             $this->Flash->success(__d(
                 'entree',
                 'The {0} has been deleted.',
-                strtolower(__d('permission_categories', 'Permission category'))
+                strtolower(__d('ecr_permission_categories', 'Permission category'))
             ));
         }
 

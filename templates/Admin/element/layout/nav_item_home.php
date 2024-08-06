@@ -4,7 +4,7 @@
  */
 ?>
 <?= $this->element('EntreeCore.layout/nav_item', [
-  'title' => __d('admin_layout', 'Home'),
+  'title' => __d('ecr_admin_layout', 'Home'),
   'isActive' => $this->request->getParam('controller') === 'Home',
   'url' => $this->Url->build([
     'plugin' => 'EntreeCore',

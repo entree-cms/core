@@ -141,7 +141,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
-        $rules->add($rules->validCount('roles', 0, '>', __d('cake', 'This field cannot be left empty')));
+        $rules->add($rules->validCount('roles', 0, '>', __d('ecr_cake', 'This field cannot be left empty')));
 
         return $rules;
     }

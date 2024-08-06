@@ -139,7 +139,7 @@ class AppController extends BaseController
 
         $prefix = $this->request->getParam('prefix');
 
-        $title = __d('site_layout', 'Home');
+        $title = __d('ecr_site_layout', 'Home');
         $url = Router::url([
             'plugin' => 'EntreeCore',
             'prefix' => $prefix,
@@ -270,7 +270,7 @@ class AppController extends BaseController
 
         $localeList = [];
         foreach ($locales as $locale) {
-            $localeList[$locale] = __d('locales', $locale);
+            $localeList[$locale] = __d('ecr_locales', $locale);
         }
 
         $defaultLocale = Configure::read('App.defaultLocale');

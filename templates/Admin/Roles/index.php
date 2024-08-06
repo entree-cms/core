@@ -4,7 +4,7 @@
  * @var iterable<\EntreeCore\Model\Entity\Role> $roles The roles
  */
 
-$pageTitle = __d('roles', 'Roles');
+$pageTitle = __d('ecr_roles', 'Roles');
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.Roles/breadcrumbs');
@@ -17,7 +17,7 @@ $this->element('EntreeCore.Roles/breadcrumbs');
     </h1>
     <nav class="ms-auto">
       <?php $url = $this->Url->build(['action' => 'add']) ?>
-      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('entree', 'Add new') ?>">
+      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('ecr_common', 'Add new') ?>">
         <i class="fas fa-plus"></i>
       </a>
     </nav>

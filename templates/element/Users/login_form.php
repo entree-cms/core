@@ -7,12 +7,12 @@
 ?>
 <div class="d-flex flex-column gap-3">
   <?= $this->Form->exControl('username', [
-    'label' => __d('users', 'Username'),
+    'label' => __d('ecr_users', 'Username'),
     'autofocus' => true,
   ]) ?>
 
   <?= $this->Form->exControl('password', [
-    'label' => __d('users', 'Password'),
+    'label' => __d('ecr_users', 'Password'),
     'type' => 'password',
     'val' => '',
   ]) ?>

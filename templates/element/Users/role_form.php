@@ -1,7 +1,7 @@
 <?php $isDisabled = $loginUser->cannot('editRole', $user) ?>
 <?php $name = 'roles._ids.0'; ?>
 <?= $this->Form->exControl($name, [
-  'label' => __d('users', 'Role'),
+  'label' => __d('ecr_users', 'Role'),
   'type' => 'select',
   'container' => ['class' => 'w-100'],
   'disabled' => $isDisabled,

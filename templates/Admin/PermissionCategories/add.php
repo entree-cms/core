@@ -3,7 +3,7 @@
  * @var \EntreeCore\Model\Entity\PermissionCategory $permissionCategory The permission category
  * @var \EntreeCore\View\AppView $this The view
  */
-$pageTitle = __d('entree', 'Add {0}', strtolower(__d('permission_categories', 'Permission category')));
+$pageTitle = __d('ecr_common', 'Add {0}', strtolower(__d('ecr_permission_categories', 'Permission category')));
 $this->assign('title',  $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.PermissionCategories/breadcrumbs');
@@ -24,7 +24,7 @@ $this->element('EntreeCore.PermissionCategories/breadcrumbs');
       <!-- Action -->
       <div class="py-5 text-center">
         <button type="submit" class="btn btn-success">
-          <?= __d('entree', 'Save') ?>
+          <?= __d('ecr_common', 'Save') ?>
         </button>
       </div>
     </div>

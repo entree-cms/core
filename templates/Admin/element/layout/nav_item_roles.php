@@ -6,7 +6,7 @@
 ?>
 <?php if ($loginUser->can('manage roles')): ?>
   <?= $this->element('EntreeCore.layout/nav_item', [
-    'title' => __d('admin_layout', 'Roles'),
+    'title' => __d('ecr_admin_layout', 'Roles'),
     'isActive' => $this->request->getParam('controller') === 'Roles',
     'url' => $this->Url->build([
       'plugin' => 'EntreeCore',

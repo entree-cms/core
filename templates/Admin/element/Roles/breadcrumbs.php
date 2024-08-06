@@ -10,15 +10,15 @@ $params = $breadcrumbBase;
 // Role list
 $isList = $action === 'index';
 $url = $isList ? null : ['plugin' => 'EntreeCore', 'controller' => 'Roles', 'action' => 'index'];
-$params[] = ['title' => __d('roles', 'Roles'), 'url' => $url];
+$params[] = ['title' => __d('ecr_roles', 'Roles'), 'url' => $url];
 
 // Current
 switch ($action) {
   case 'add':
-    $params[] = ['title' => __d('entree', 'Add new')];
+    $params[] = ['title' => __d('ecr_common', 'Add new')];
     break;
   case 'edit':
-    $params[] = ['title' => __d('entree', 'Edit')];
+    $params[] = ['title' => __d('ecr_common', 'Edit')];
     break;
 }
 

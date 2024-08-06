@@ -8,12 +8,12 @@
   <table class="table table-sm table-hover table-striped border small">
     <thead>
       <tr class="text-nowrap">
-        <th><?= $this->Paginator->sort('username', __d('users', 'Username')) ?></th>
-        <th><?= $this->Paginator->sort('full_name', __d('users', 'Full name')) ?></th>
-        <th><?= __d('users', 'Role') ?></th>
-        <th><?= $this->Paginator->sort('created', __d('entree', 'Created')) ?></th>
-        <th><?= $this->Paginator->sort('modified', __d('entree', 'Modified')) ?></th>
-        <th><?= __d('entree', 'Actions') ?></th>
+        <th><?= $this->Paginator->sort('username', __d('ecr_users', 'Username')) ?></th>
+        <th><?= $this->Paginator->sort('full_name', __d('ecr_users', 'Full name')) ?></th>
+        <th><?= __d('ecr_users', 'Role') ?></th>
+        <th><?= $this->Paginator->sort('created', __d('ecr_common', 'Created')) ?></th>
+        <th><?= $this->Paginator->sort('modified', __d('ecr_common', 'Modified')) ?></th>
+        <th><?= __d('ecr_common', 'Actions') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -56,7 +56,7 @@
           <td>
             <?php $url = $this->Url->build(['action' => 'edit', $user->id]); ?>
             <a href="<?= $url ?>" class="btn btn-sm btn-primary">
-              <?= __d('entree', 'Edit') ?>
+              <?= __d('ecr_common', 'Edit') ?>
             </a>
           </td>
         </tr>

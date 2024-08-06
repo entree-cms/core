@@ -9,7 +9,7 @@
 <div class="translations">
   <?php foreach ($translationLocales as $locale): ?>
     <?php $name = "_translations.{$locale}.{$field}"; ?>
-    <?php $language = __d('languages', $locale); ?>
+    <?php $language = __d('ecr_languages', $locale); ?>
     <?= $this->Form->exControl($name, [
       'label' => false,
       'val' => $this->request->getData($name, $entity->translation($locale)->{$field}),

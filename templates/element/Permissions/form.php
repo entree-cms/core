@@ -7,25 +7,25 @@
 <!-- Permission category -->
 <?php $field = 'permission_category_id'; ?>
 <?= $this->Form->exControl('permission_category_id', [
-  'label' => __d('permissions', 'Category'),
+  'label' => __d('ecr_permissions', 'Category'),
   'options' => $permissionCategories->combine('id', 'name')->toArray(),
   'required' => true,
 ]) ?>
 
 <!-- Code -->
 <?= $this->Form->exControl('code', [
-  'label' => __d('permissions', 'Code'),
+  'label' => __d('ecr_permissions', 'Code'),
   'required' => true,
 ]) ?>
 
 <!-- Name -->
 <?= $this->Form->exControl('name', [
-  'label' => __d('permissions', 'Name'),
+  'label' => __d('ecr_permissions', 'Name'),
   'required' => true,
 ]) ?>
 
 
 <!-- Description -->
 <?= $this->Form->exControl('description', [
-  'label' => __d('permissions', 'Description'),
+  'label' => __d('ecr_permissions', 'Description'),
 ]) ?>

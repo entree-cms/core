@@ -4,7 +4,7 @@
  * @var \EntreeCore\Model\Entity\Role $role The Role
  */
 
-$pageTitle = __d('entree', 'Add {0}', strtolower(__d('roles', 'Role')));
+$pageTitle = __d('ecr_common', 'Add {0}', strtolower(__d('ecr_roles', 'Role')));
 $this->assign('title',  $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.Roles/breadcrumbs');
@@ -30,7 +30,7 @@ $this->element('EntreeCore.Roles/breadcrumbs');
     <!-- Action -->
     <div class="py-5 text-center">
       <button type="submit" class="btn btn-success">
-        <?= __d('entree', 'Save') ?>
+        <?= __d('ecr_common', 'Save') ?>
       </button>
     </div>
   </div>

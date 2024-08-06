@@ -16,7 +16,7 @@ $itemsHtml = $this->Nav->convertItemsToHtml($navItems, [
       id="nav-settings" class="nav-link dropdown-toggle<?= $active ?>" href="#"
       role="button" data-bs-toggle="dropdown" aria-expanded="false"
       >
-      <?= __d('admin_layout', 'Settings') ?>
+      <?= __d('ecr_admin_layout', 'Settings') ?>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-settings">
       <?= $itemsHtml ?>

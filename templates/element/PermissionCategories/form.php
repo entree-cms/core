@@ -6,12 +6,12 @@
 ?>
 <div class="permission_category-form d-flex flex-column gap-4">
   <?= $this->Form->exControl('name', [
-    'label' => __d('permission_categories', 'Name'),
+    'label' => __d('ecr_permission_categories', 'Name'),
     'required' => true,
   ]) ?>
 
   <?= $this->Form->exControl('description', [
-    'label' => __d('permission_categories', 'Description'),
+    'label' => __d('ecr_permission_categories', 'Description'),
     'required' => false,
   ]) ?>
 </div>

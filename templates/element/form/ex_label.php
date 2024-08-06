@@ -17,7 +17,7 @@ if ($attrsText !== '') {
     <?= $labelText ?>
     <?php if ($required): ?>
       <span class="badge align-items-center fw-normal ms-2 px-2 small text-bg-danger">
-        <?= __d('entree', 'Required') ?>
+        <?= __d('ecr_common', 'Required') ?>
       </span>
     <?php endif; ?>
   </label>

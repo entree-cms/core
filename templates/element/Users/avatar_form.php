@@ -12,7 +12,7 @@ if (!$isNoAvatar) {
 ?>
 <!-- File form -->
 <?= $this->Form->exControl('avatar_file', [
-  'label' => __d('users', 'Avatar'),
+  'label' => __d('ecr_users', 'Avatar'),
   'type' => 'file',
   'class' => 'input-avatar-file',
   'prepend' => '<i class="fa-solid fa-circle-user small"></i>',
@@ -31,7 +31,7 @@ if (!$isNoAvatar) {
         class="input-no-avatar" type="checkbox"<?= $checked ?>
         id="input-no-avatar"name="no_avatar" value="1">
       <label for="input-no-avatar">
-        <?= __d('users', 'No avatar') ?>
+        <?= __d('ecr_users', 'No avatar') ?>
       </label>
     </div>
   </div>

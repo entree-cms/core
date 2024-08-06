@@ -84,7 +84,7 @@ class UserActionComponent extends Component
                 $this->controller->Flash->success(__d(
                     'entree',
                     'The {0} has been saved successfully.',
-                    strtolower(__d('users', 'User'))
+                    strtolower(__d('ecr_users', 'User'))
                 ));
 
                 return $this->controller->redirect(['action' => $this->request->getParam('action')]);
@@ -92,7 +92,7 @@ class UserActionComponent extends Component
             $this->controller->Flash->error(__d(
                 'entree',
                 'The {0} could not be saved. Please, try again.',
-                strtolower(__d('users', 'User'))
+                strtolower(__d('ecr_users', 'User'))
             ));
         }
 
@@ -127,7 +127,7 @@ class UserActionComponent extends Component
 
         return array_map(function ($locale) {
             return [
-                'text' => __d('Languages', $locale),
+                'text' => __d('ecr_Languages', $locale),
                 'value' => $locale,
             ];
         }, $locales);

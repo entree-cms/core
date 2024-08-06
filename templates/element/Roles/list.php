@@ -8,12 +8,12 @@
   <table class="table table-sm table-hover table-striped border small">
     <thead>
       <tr class="text-nowrap">
-        <th><?= $this->Paginator->sort('name', __d('roles', 'Name')) ?></th>
-        <th><?= $this->Paginator->sort('code', __d('roles', 'Code')) ?></th>
-        <th><?= $this->Paginator->sort('description', __d('roles', 'Description')) ?></th>
-        <th><?= $this->Paginator->sort('created', __d('roles', 'Created')) ?></th>
-        <th><?= $this->Paginator->sort('modified', __d('roles', 'Modified')) ?></th>
-        <th><?= __d('entree', 'Actions') ?></th>
+        <th><?= $this->Paginator->sort('name', __d('ecr_roles', 'Name')) ?></th>
+        <th><?= $this->Paginator->sort('code', __d('ecr_roles', 'Code')) ?></th>
+        <th><?= $this->Paginator->sort('description', __d('ecr_roles', 'Description')) ?></th>
+        <th><?= $this->Paginator->sort('created', __d('ecr_roles', 'Created')) ?></th>
+        <th><?= $this->Paginator->sort('modified', __d('ecr_roles', 'Modified')) ?></th>
+        <th><?= __d('ecr_common', 'Actions') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -48,7 +48,7 @@
             <!-- Edit -->
             <?php $url = $this->Url->build(['action' => 'edit', $role->id]) ?>
             <a href="<?= $url ?>" class="btn btn-sm btn-primary">
-              <?= __d('entree', 'Edit') ?>
+              <?= __d('ecr_common', 'Edit') ?>
             </a>
           </td>
         </tr>

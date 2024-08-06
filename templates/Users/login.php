@@ -2,7 +2,7 @@
 /**
  * @var \EntreeCore\View\AppView $this
  */
-$this->assign('title', __d('login', 'Sign in'));
+$this->assign('title', __d('ecr_login', 'Sign in'));
 
 $this->Html->css([
   'EntreeCore.login',
@@ -12,7 +12,7 @@ $this->Html->css([
 ?>
 <div class="login container-xxl">
   <h1 class="fs-2 py-4 text-center">
-    <?= __d('login', 'Sign in') ?>
+    <?= __d('ecr_login', 'Sign in') ?>
   </h1>
 
   <?= $this->Form->create() ?>
@@ -29,7 +29,7 @@ $this->Html->css([
 
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-success">
-            <?= __d('login', 'Sign in') ?>
+            <?= __d('ecr_login', 'Sign in') ?>
           </button>
         </div>
       </div>

@@ -75,8 +75,8 @@ class UsersController extends AppController
         }
 
         if ($this->request->is('post') && $result->isValid() === false) {
-            $this->Flash->error(__d('login', 'Invalid {0} or password', [
-                strtolower(__d('users', 'Username')),
+            $this->Flash->error(__d('ecr_login', 'Invalid {0} or password', [
+                strtolower(__d('ecr_users', 'Username')),
             ]));
         }
 

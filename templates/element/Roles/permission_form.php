@@ -8,7 +8,7 @@
   <div class="form-container">
     <!-- Label -->
     <label class="form-label">
-      <?= __d('roles', 'Permissions'); ?>
+      <?= __d('ecr_roles', 'Permissions'); ?>
     </label>
     <!-- Privileged role -->
     <?php if ($role->is_privileged): ?>

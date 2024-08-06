@@ -4,7 +4,7 @@
  * @var iterable<\EntreeCore\Model\Entity\User> $users
  */
 
-$pageTitle = __d('users', 'Users');
+$pageTitle = __d('ecr_users', 'Users');
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.Users/breadcrumbs');
@@ -16,7 +16,7 @@ $this->element('EntreeCore.Users/breadcrumbs');
     </h1>
     <nav class="ms-auto">
       <?php $url = $this->Url->build(['action' => 'add']) ?>
-      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('entree', 'Add new') ?>">
+      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('ecr_common', 'Add new') ?>">
         <i class="fas fa-plus"></i>
       </a>
     </nav>
@@ -34,7 +34,7 @@ $this->element('EntreeCore.Users/breadcrumbs');
 <div class="container-xxl">
   <?php if (count($users) === 0): ?>
     <div class="alert alert-secondary text-center">
-      <?= __d('entree', "We couldn't find any {0}.", strtolower(__d('users', 'Users'))) ?>
+      <?= __d('ecr_common', "We couldn't find any {0}.", strtolower(__d('ecr_users', 'Users'))) ?>
     </div>
   <?php else: ?>
     <?php $pagination = $this->element('EntreeCore.layout/pagination'); ?>

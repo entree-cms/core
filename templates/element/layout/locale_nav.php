@@ -9,7 +9,7 @@ if (count($locales) <= 1) {
 }
 
 $localeOptions = array_map(function ($locale) {
-  return ['text' => __d('languages', $locale), 'value' => $locale];
+  return ['text' => __d('ecr_languages', $locale), 'value' => $locale];
 }, $locales);
 
 ?>

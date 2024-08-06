@@ -7,11 +7,11 @@
 ?>
 <?php if ($loginUser->can('delete', $permissionCategory)): ?>
   <?= $this->Form->postButton(
-    __d('entree', 'Delete'),
+    __d('ecr_common', 'Delete'),
     ['action' => 'delete', $permissionCategory->id],
     [
       'class' => 'btn btn-danger',
-      'confirm' => __d('entree', 'Are you sure?')
+      'confirm' => __d('ecr_common', 'Are you sure?')
     ]
   ) ?>
 <?php endif; ?>

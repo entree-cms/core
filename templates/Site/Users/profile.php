@@ -4,7 +4,7 @@
  * @var \EntreeCore\View\AppView $this The viewer
  */
 
-$pageTitle = __d('entree', 'Edit {0}', strtolower(__d('users', 'Profile')));
+$pageTitle = __d('ecr_common', 'Edit {0}', strtolower(__d('ecr_users', 'Profile')));
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->Html->script([
@@ -14,7 +14,7 @@ $this->Html->script([
 ]);
 
 $breadcrumbs = $breadcrumbBase;
-$breadcrumbs[] = ['title' => __d('users', 'Profile')];
+$breadcrumbs[] = ['title' => __d('ecr_users', 'Profile')];
 $this->Breadcrumbs->add($breadcrumbs);
 ?>
 <div class="container-xxl my-4">
@@ -35,7 +35,7 @@ $this->Breadcrumbs->add($breadcrumbs);
       <!-- Actions -->
       <div class="py-5 text-center">
         <button type="submit" class="btn btn-success">
-          <?= __d('entree', 'Save') ?>
+          <?= __d('ecr_common', 'Save') ?>
         </button>
       </div>
     </div>

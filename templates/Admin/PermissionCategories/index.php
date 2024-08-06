@@ -4,7 +4,7 @@
  * @var iterable<\EntreeCore\Model\Entity\PermissionCategory> $permissionCategories The permission categories
  */
 
-$pageTitle = __d('permission_categories', 'Permission categories');
+$pageTitle = __d('ecr_permission_categories', 'Permission categories');
 $this->assign('title', $this->makeTitle($pageTitle));
 
 $this->element('EntreeCore.PermissionCategories/breadcrumbs');
@@ -16,7 +16,7 @@ $this->element('EntreeCore.PermissionCategories/breadcrumbs');
     </h1>
     <nav class="ms-auto">
       <?php $url = $this->Url->build(['action' => 'add']) ?>
-      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('entree', 'Add new') ?>">
+      <a class="btn btn-secondary btn-sm rounded-circle" href="<?= $url ?>" title="<?= __d('ecr_common', 'Add new') ?>">
         <i class="fas fa-plus"></i>
       </a>
     </nav>
