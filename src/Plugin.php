@@ -7,10 +7,9 @@ use Authentication\Middleware\AuthenticationMiddleware;
 use Authorization\Middleware\AuthorizationMiddleware;
 use Cake\Console\CommandCollection;
 use Cake\Core\BasePlugin;
-use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
-use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
+use Cake\Routing\RouteBuilder;
 use EntreeCore\Authentication\AuthenticationServiceProvider;
 use EntreeCore\Authorization\AuthorizationServiceProvider;
 
@@ -20,35 +19,17 @@ use EntreeCore\Authorization\AuthorizationServiceProvider;
 class Plugin extends BasePlugin
 {
     /**
-     * Load all the plugin configuration and bootstrap logic.
+     * Add routes for the plugin.
      *
-     * The host application is provided as an argument. This allows you to load
-     * additional plugin dependencies, or attach events.
+     * If your plugin has many routes and you would like to isolate them into a separate file,
+     * you can create `$plugin/config/routes.php` and delete this method.
      *
-     * @param \Cake\Core\PluginApplicationInterface $app The host application
+     * @param \Cake\Routing\RouteBuilder $routes The route builder to update.
      * @return void
      */
-    public function bootstrap(PluginApplicationInterface $app): void
+    public function routes(RouteBuilder $routes): void
     {
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
-
-        require_once dirname(__DIR__) . DS . 'config' . DS . 'basics.php';
-
-        if (!defined('ENTREE_CORE_DEFAULT_STORAGE')) {
-            $root = defined('ROOT') ? ROOT : dirname(dirname(dirname(__DIR__)));
-            define('ENTREE_CORE_DEFAULT_STORAGE', $root . DS . 'storage' . DS);
-        }
-
-        // Load an environment default configuration file
-        $this->loadConfig();
-
-        $app->addPlugin('Authentication');
-        $app->addPlugin('Authorization');
-
-        // DebugKit settings
-        Configure::write('DebugKit.ignoreAuthorization', true);
+        parent::routes($routes);
     }
 
     /**
@@ -59,7 +40,8 @@ class Plugin extends BasePlugin
      */
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
     {
-        return $middlewareQueue
+        // Add your middlewares here
+        $middlewareQueue
             // Add the AuthenticationMiddleware. It should be after routing and body parser.
             ->add(new AuthenticationMiddleware(
                 new AuthenticationServiceProvider()
@@ -74,6 +56,8 @@ class Plugin extends BasePlugin
                     },
                 ]
             ));
+
+        return $middlewareQueue;
     }
 
     /**
@@ -101,23 +85,5 @@ class Plugin extends BasePlugin
     public function services(ContainerInterface $container): void
     {
         // Add your services here
-    }
-
-    // *********************************************************
-    // * Internal methods
-    // *********************************************************
-
-    /**
-     * Load EntreeCore configure
-     *
-     * @internal
-     * @return void
-     */
-    private function loadConfig(): void
-    {
-        Configure::load('EntreeCore.plugin_entree_core', 'default');
-        if (file_exists(CONFIG . 'plugin_entree_core.php')) {
-            Configure::load('plugin_entree_core', 'default');
-        }
     }
 }

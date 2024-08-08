@@ -65,12 +65,12 @@ class AppView extends View
         $separator = ' - ';
         switch ($prefix) {
             case 'Admin':
-                $append = Configure::read('Entree.Admin.title') ?? '';
-                $separator = Configure::read('Entree.Admin.titleSeparator') ?? $separator;
+                $append = Configure::read('EntreeCore.Admin.title');
+                $separator = Configure::read('EntreeCore.Admin.titleSeparator');
                 break;
             case 'Site':
-                $append = Configure::read('Entree.Site.title') ?? '';
-                $separator = Configure::read('Entree.Site.titleSeparator') ?? $separator;
+                $append = Configure::read('EntreeCore.Site.title');
+                $separator = Configure::read('EntreeCore.Site.titleSeparator');
                 break;
         }
         if (!is_string($append) || !is_string($separator)) {

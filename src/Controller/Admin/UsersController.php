@@ -155,7 +155,7 @@ class UsersController extends AppController
 
         // Get full name to sort
         $fullNameOptions = [];
-        foreach (Configure::read('Entree.personalNameOrder') as $prefix) {
+        foreach (Configure::read('EntreeCore.personalNameOrder') as $prefix) {
             $fullNameOptions["{$prefix}_name"] = 'literal';
         }
         $fields['full_name'] = $this->Users->query()->func()->concat($fullNameOptions);

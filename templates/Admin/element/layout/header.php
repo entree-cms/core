@@ -11,7 +11,7 @@ $action = $this->request->getParam('action');
     <!-- Title -->
     <?php $url = $this->Url->build(['controller' => 'Home', 'action' => 'index']) ?>
     <a class="navbar-brand" href="<?= $url ?>">
-      <?= $this->Configure->read('Entree.Admin.title') ?>
+      <?= $this->Configure->read('EntreeCore.Admin.title') ?>
     </a>
 
     <!-- Toggler -->

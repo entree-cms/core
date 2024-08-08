@@ -80,7 +80,7 @@ class User extends Entity implements AuthenticationIdentity, AuthorizationIdenti
             return null;
         }
 
-        $dir = Configure::read('Entree.paths.avatars');
+        $dir = Configure::read('EntreeCore.paths.avatars');
         if (!is_string($dir)) {
             throw new InternalErrorException();
         }
@@ -119,7 +119,7 @@ class User extends Entity implements AuthenticationIdentity, AuthorizationIdenti
      */
     protected function _getFullName(): ?string
     {
-        $order = Configure::read('Entree.personalNameOrder');
+        $order = Configure::read('EntreeCore.personalNameOrder');
         $names = [];
         foreach ($order as $namePrefix) {
             $field = "{$namePrefix}_name";

@@ -22,12 +22,7 @@ class AuthenticationServiceProvider implements AuthenticationServiceProviderInte
     public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
     {
         $unauthRedirect = Router::url(
-            Configure::read('Entree.unauthRedirect') ?? [
-                'plugin' => 'EntreeCore',
-                'prefix' => '',
-                'controller' => 'Users',
-                'action' => 'login',
-            ]
+            Configure::read('EntreeCore.unauthRedirect')
         );
 
         $service = new AuthenticationService();

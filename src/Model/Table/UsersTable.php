@@ -275,7 +275,7 @@ class UsersTable extends Table
             throw new InternalErrorException();
         }
 
-        $dir = Configure::read('Entree.paths.avatars');
+        $dir = Configure::read('EntreeCore.paths.avatars');
         if (!is_string($dir)) {
             throw new InternalErrorException();
         }

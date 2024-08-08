@@ -25,17 +25,9 @@ class AppController extends BaseController
             throw new ForbiddenException();
         }
 
-        // Title
-        if (Configure::read('Entree.Admin.title') === null) {
-            Configure::write('Entree.Admin.title', 'Entree CMS Admin');
-        }
-
         // Layout
-        $layout = Configure::read('Entree.Admin.layout') ?? 'EntreeCore.admin_default';
+        $layout = Configure::read('EntreeCore.Admin.layout');
         $this->viewBuilder()->setLayout($layout);
-
-        // Configure navigation items
-        $this->configureNavItems();
 
         // Set base parameters for breadcrumbs
         $this->set('breadcrumbBase', $this->getBreadcrumbBase());

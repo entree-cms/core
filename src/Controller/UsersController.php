@@ -95,7 +95,7 @@ class UsersController extends AppController
         $this->Authentication->logout();
 
         return $this->redirect(
-            Configure::read('Entree.logoutRedirect', ['action' => 'login'])
+            Configure::read('EntreeCore.logoutRedirect', ['action' => 'login'])
         );
     }
 
@@ -116,10 +116,6 @@ class UsersController extends AppController
             return $redirect;
         }
 
-        return Configure::read('Entree.loginRedirect', [
-            'prefix' => 'Site',
-            'controller' => 'Home',
-            'action' => 'index',
-        ]);
+        return Configure::read('EntreeCore.loginRedirect');
     }
 }

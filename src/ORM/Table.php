@@ -32,7 +32,7 @@ class Table extends BaseTable
         parent::initialize($config);
 
         if (count(static::$translationFields) > 0) {
-            $this->usingTranslation = Configure::read('Entree.translate', false) === true;
+            $this->usingTranslation = Configure::read('EntreeCore.translate') === true;
         }
 
         if ($this->usingTranslation === true) {

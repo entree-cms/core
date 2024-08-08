@@ -123,7 +123,7 @@ class UserActionComponent extends Component
      */
     protected function makeLocaleOptions()
     {
-        $locales = Configure::read('Entree.locales');
+        $locales = Configure::read('EntreeCore.locales');
 
         return array_map(function ($locale) {
             return [

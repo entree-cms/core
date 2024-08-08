@@ -48,9 +48,6 @@ class AppController extends BaseController
 
         $this->initSession();
 
-        $this->configureLocales();
-        $this->configurePaths();
-
         $this->setLocaleVars();
         $this->setLoginUser();
 
@@ -63,68 +60,6 @@ class AppController extends BaseController
     // *********************************************************
     // * Internal methods
     // *********************************************************
-
-    /**
-     * Configure locales
-     *
-     * @internal
-     * @return void
-     */
-    protected function configureLocales(): void
-    {
-        if (method_exists(parent::class, 'configureLocales')) {
-            parent::configureLocales();
-
-            return;
-        }
-
-        $locales = Configure::read('Entree.locales', []);
-        if (is_array($locales) && count($locales) > 0) {
-            return;
-        }
-        $defaultLocales = Configure::read('EntreeCore.locales');
-        Configure::write('Entree.locales', $defaultLocales);
-    }
-
-    /**
-     * Configure navigation items
-     *
-     * @internal
-     * @param string|null $prefix The prefix
-     * @return void
-     */
-    protected function configureNavItems(?string $prefix = null): void
-    {
-        if (method_exists(parent::class, 'configureNavItems')) {
-            parent::configureNavItems($prefix);
-
-            return;
-        }
-
-        $prefix = $prefix ?? $this->request->getParam('prefix');
-        $navItems = Configure::read("Entree.{$prefix}.navItems", []);
-        $thisNavItems = Configure::read("EntreeCore.{$prefix}.navItems", []);
-        Configure::write("Entree.{$prefix}.navItems", array_merge($thisNavItems, $navItems));
-    }
-
-    /**
-     * Configure paths
-     *
-     * @internal
-     * @return void
-     */
-    protected function configurePaths(): void
-    {
-        if (method_exists(parent::class, 'configurePaths')) {
-            parent::configurePaths();
-
-            return;
-        }
-
-        $defaultPaths = Configure::read('EntreeCore.paths');
-        $paths = Configure::read('Entree.paths', []);
-        Configure::write('Entree.paths', array_merge($defaultPaths, $paths));
-    }
 
     /**
      * Get base parameters for breadcrumbs
@@ -203,7 +138,7 @@ class AppController extends BaseController
             return;
         }
 
-        if (is_array(Configure::read('Entree.personalNameOrder'))) {
+        if (is_array(Configure::read('EntreeCore.personalNameOrder'))) {
             return;
         }
 
@@ -214,7 +149,7 @@ class AppController extends BaseController
             $order = ['last', 'first'];
         }
 
-        Configure::write('Entree.personalNameOrder', $order);
+        Configure::write('EntreeCore.personalNameOrder', $order);
     }
 
     /**
@@ -263,7 +198,8 @@ class AppController extends BaseController
             return;
         }
 
-        $locales = Configure::read('Entree.locales');
+        $defaultLocale = Configure::read('App.defaultLocale');
+        $locales = Configure::read('EntreeCore.locales', [$defaultLocale]);
         if (!is_array($locales)) {
             throw new InternalErrorException();
         }
@@ -273,7 +209,6 @@ class AppController extends BaseController
             $localeList[$locale] = __d('ecr_locales', $locale);
         }
 
-        $defaultLocale = Configure::read('App.defaultLocale');
         $translationLocales = array_filter($locales, function ($value) use ($defaultLocale) {
             return $value !== $defaultLocale;
         });

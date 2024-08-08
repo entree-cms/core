@@ -8,7 +8,7 @@ return static function (RouteBuilder $routes) {
      * Admin
      */
     (function () use ($routes) {
-        $adminBase = Configure::read('Entree.Admin.base', Configure::read('EntreeCore.Admin.base'));
+        $adminBase = Configure::read('EntreeCore.Admin.base');
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Admin'];
         // Home
         $routes->connect("{$adminBase}/", ['controller' => 'Home', 'action' => 'index'] + $params);
@@ -40,7 +40,7 @@ return static function (RouteBuilder $routes) {
      * Api
      */
     (function () use ($routes) {
-        $apiBase = Configure::read('Entree.Api.base', Configure::read('EntreeCore.Api.base'));
+        $apiBase = Configure::read('EntreeCore.Api.base');
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Api'];
         // Configurations
         $routes->connect("{$apiBase}/configs/set-locale", ['controller' => 'Configs', 'action' => 'setLocale'] + $params);
@@ -50,7 +50,7 @@ return static function (RouteBuilder $routes) {
      * Site
      */
     (function () use ($routes) {
-        $siteBase = Configure::read('Entree.Site.base', Configure::read('EntreeCore.Site.base'));
+        $siteBase = Configure::read('EntreeCore.Site.base');
         $params = ['plugin' => 'EntreeCore', 'prefix' => 'Site'];
 
         $routes->connect("{$siteBase}/", ['controller' => 'Home', 'action' => 'index'] + $params);
@@ -62,7 +62,7 @@ return static function (RouteBuilder $routes) {
      * Others
      */
     (function () use ($routes) {
-        $base = Configure::read('Entree.base') ?? '';
+        $base = Configure::read('EntreeCore.base');
         $params = ['plugin' => 'EntreeCore', 'prefix' => ''];
 
         $routes->connect("{$base}/avatars/{fileName}", ['controller' => 'Users', 'action' => 'avatar'] + $params)

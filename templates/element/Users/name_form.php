@@ -1,5 +1,5 @@
 <div class="d-flex flex-row gap-3">
-  <?php foreach ($this->Configure->read('Entree.personalNameOrder') as $prefix): ?>
+  <?php foreach ($this->Configure->read('EntreeCore.personalNameOrder') as $prefix): ?>
     <?php $field = "{$prefix}_name"; ?>
     <?php $label = ucfirst($prefix) . ' name'; ?>
     <?= $this->Form->exControl($field, [
