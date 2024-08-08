@@ -16,7 +16,7 @@ use EntreeCore\Authorization\AuthorizationServiceProvider;
 /**
  * Plugin for EntreeCore
  */
-class Plugin extends BasePlugin
+class EntreeCorePlugin extends BasePlugin
 {
     /**
      * Add routes for the plugin.
