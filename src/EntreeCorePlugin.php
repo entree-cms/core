@@ -7,9 +7,12 @@ use Authentication\Middleware\AuthenticationMiddleware;
 use Authorization\Middleware\AuthorizationMiddleware;
 use Cake\Console\CommandCollection;
 use Cake\Core\BasePlugin;
+use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
+use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
+use Cake\Utility\Hash;
 use EntreeCore\Authentication\AuthenticationServiceProvider;
 use EntreeCore\Authorization\AuthorizationServiceProvider;
 
@@ -18,6 +21,44 @@ use EntreeCore\Authorization\AuthorizationServiceProvider;
  */
 class EntreeCorePlugin extends BasePlugin
 {
+    /**
+     * Load all the plugin configuration and bootstrap logic.
+     *
+     * The host application is provided as an argument. This allows you to load
+     * additional plugin dependencies, or attach events.
+     *
+     * @param \Cake\Core\PluginApplicationInterface $app The host application
+     * @return void
+     */
+    public function bootstrap(PluginApplicationInterface $app): void
+    {
+        if (!defined('DS')) {
+            define('DS', DIRECTORY_SEPARATOR);
+        }
+
+        require_once dirname(__DIR__) . DS . 'config' . DS . 'basics.php';
+
+        if (!defined('ENTREE_CORE_DEFAULT_STORAGE')) {
+            $root = defined('ROOT') ? ROOT : dirname(dirname(dirname(__DIR__)));
+            define('ENTREE_CORE_DEFAULT_STORAGE', $root . DS . 'storage' . DS);
+        }
+
+        // Load an environment default configuration file
+        $origValues = Configure::read('EntreeCore', []);
+        Configure::load('EntreeCore.plugin_entree_core', 'default');
+        if (file_exists(CONFIG . 'plugin_entree_core.php')) {
+            Configure::load('plugin_entree_core', 'default');
+        }
+        $values = Configure::read('EntreeCore', []);
+        Configure::write('EntreeCore', Hash::merge($values, $origValues));
+
+        $app->addPlugin('Authentication');
+        $app->addPlugin('Authorization');
+
+        // DebugKit settings
+        Configure::write('DebugKit.ignoreAuthorization', true);
+    }
+
     /**
      * Add routes for the plugin.
      *
