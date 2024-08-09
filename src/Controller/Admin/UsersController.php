@@ -57,11 +57,15 @@ class UsersController extends AppController
             }
             $user = $this->Users->patchEntity($user, $postData);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__d('ecr_common', 'The {0} has been saved successfully.', strtolower(__d('ecr_users', 'User'))));
+                $this->Flash->success(
+                    __d('ecr_common', 'The {0} has been saved successfully.', strtolower(__d('ecr_users', 'User')))
+                );
 
                 return $this->redirect(['action' => 'edit', $user->id]);
             }
-            $this->Flash->error(__d('ecr_common', 'The {0} could not be saved. Please, try again.', __d('ecr_users', 'User')));
+            $this->Flash->error(
+                __d('ecr_common', 'The {0} could not be saved. Please, try again.', __d('ecr_users', 'User'))
+            );
         }
 
         $this->set(compact('user'));
@@ -127,11 +131,17 @@ class UsersController extends AppController
                     $this->Authentication->setIdentity($user);
                 }
 
-                $this->Flash->success(__d('ecr_common', 'The {0} has been saved successfully.', strtolower(__d('ecr_users', 'User'))));
+                $this->Flash->success(
+                    __d('ecr_common', 'The {0} has been saved successfully.', strtolower(__d('ecr_users', 'User')))
+                );
 
                 return $this->redirect(['action' => 'edit', $user->id]);
             }
-            $this->Flash->error(__d('ecr_common', 'The {0} could not be saved. Please, try again.', strtolower(__d('ecr_users', 'User'))));
+            $this->Flash->error(__d(
+                'ecr_common',
+                'The {0} could not be saved. Please, try again.',
+                strtolower(__d('ecr_users', 'User'))
+            ));
         }
 
         $this->set(compact('user'));
