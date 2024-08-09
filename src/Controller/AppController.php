@@ -203,6 +203,7 @@ class AppController extends BaseController
         if (!is_array($locales)) {
             throw new InternalErrorException();
         }
+        Configure::write('EntreeCore.locales', $locales);
 
         $localeList = [];
         foreach ($locales as $locale) {
