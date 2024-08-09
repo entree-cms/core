@@ -2,7 +2,11 @@
 <ruleset name="CakePHP Core">
     <config name="installed_paths" value="../../cakephp/cakephp-codesniffer" />
 
-    <rule ref="CakePHP" />
+    <rule ref="CakePHP"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
+        <exclude-pattern>*/src/Controller/*</exclude-pattern>
+    </rule>
 
-    <arg value="s"/>
+    <file>src/</file>
+    <file>tests/</file>
 </ruleset>
