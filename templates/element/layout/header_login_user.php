@@ -1,8 +1,11 @@
 <?php
 /**
- * @var \EntreeCore\Model\Entity\User $loginUser The logged in user
- * @var \EntreeCore\View $view The view
+ * @var ?int $iconSize
+ * @var \EntreeCore\Model\Entity\User $loginUser
+ * @var \EntreeCore\View $view
  */
+
+$iconSize ??= 32;
 
 $prefix = $this->request->getParam('prefix');
 ?>
@@ -13,7 +16,7 @@ $prefix = $this->request->getParam('prefix');
       class="nav-link dropdown-toggle d-flex flex-row align-items-center gap-2 py-1"
       id="dropdown-login-user" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
       >
-      <?= $this->element('EntreeCore.Users/avatar', ['user' => $loginUser, 'size' => 32]) ?>
+      <?= $this->element('EntreeCore.Users/avatar', ['user' => $loginUser, 'size' => $iconSize]) ?>
       <span class="name"><?= h($loginUser->name) ?></span>
     </a>
 
