@@ -1,6 +1,4 @@
 <?php
-use Cake\Core\Configure;
-
 return [
     'EntreeCore' => [
         /*
@@ -79,12 +77,10 @@ return [
         'Site' => [
             'base' => '',
             'layout' => 'EntreeCore.site_default',
-            'homeUrl' => null,
             'title' => 'Entree CMS',
             'titleSeparator' => ' - ',
             // Navigation items
-            'navItems' => [
-            ],
+            'navItems' => [],
         ],
     ],
 ];
