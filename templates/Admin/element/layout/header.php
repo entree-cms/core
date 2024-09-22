@@ -9,7 +9,7 @@ $action = $this->request->getParam('action');
 <header class="navbar navbar-expand-md navbar-dark bg-dark py-1">
   <div class="container-xxl">
     <!-- Title -->
-    <?php $url = $this->Url->build(['controller' => 'Home', 'action' => 'index']) ?>
+    <?php $url = $this->Configure->read('EntreeCore.Admin.homeUrl') ?>
     <a class="navbar-brand" href="<?= $url ?>">
       <?= $this->Configure->read('EntreeCore.Admin.title') ?>
     </a>

@@ -7,7 +7,7 @@
 <header class="navbar navbar-expand-sm bg-white border-bottom sticky-top">
   <div class="container-xxl">
     <!-- Title -->
-    <a class="navbar-brand" href="<?= $this->Configure->read('EntreeCore.Site.homeUrl', $this->Url->build('/')) ?>">
+    <a class="navbar-brand" href="<?= $this->Configure->read('EntreeCore.Site.homeUrl') ?>">
       <?= $this->Configure->read('EntreeCore.Site.title') ?>
     </a>
 

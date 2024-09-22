@@ -52,6 +52,7 @@ class AppController extends BaseController
         $this->setLoginUser();
 
         $this->initFlash();
+        $this->initHomeUrlSettings();
         $this->initLocale();
         $this->initPersonalNameOrder();
         $this->initView();
@@ -72,17 +73,16 @@ class AppController extends BaseController
             return parent::getBreadcrumbBase();
         }
 
+        $params = [];
+
         $prefix = $this->request->getParam('prefix');
+        $url = Configure::read("EntreeCore.{$prefix}.homeUrl");
+        if (isset($url)) {
+            $title = __d('ecr_site_layout', 'Home');
+            $params[] = compact('title', 'url');
+        }
 
-        $title = __d('ecr_site_layout', 'Home');
-        $url = Router::url([
-            'plugin' => 'EntreeCore',
-            'prefix' => $prefix,
-            'controller' => 'Home',
-            'action' => 'index',
-        ]);
-
-        return [compact('title', 'url')];
+        return $params;
     }
 
     /**
@@ -99,6 +99,28 @@ class AppController extends BaseController
         }
 
         $this->Flash->setConfig('plugin', 'EntreeCore');
+    }
+
+    /**
+     * Initialize home URL settings
+     *
+     * @return void
+     */
+    protected function initHomeUrlSettings():void
+    {
+        foreach (['Admin', 'Site'] as $prefix) {
+            $key = "EntreeCore.{$prefix}.homeUrl";
+            if (Configure::read($key)) {
+                continue;
+            }
+
+            Configure::write($key, Router::url([
+                'plugin' => 'EntreeCore',
+                'prefix' => $prefix,
+                'controller' => 'Home',
+                'action' => 'index',
+            ]));
+        }
     }
 
     /**
